@@ -53,7 +53,7 @@ export const getChat = (data: obj) => {
     return axios.get(`${API_HULIAPI}chat`, {params: data});
 }
 
-export const getStat = (id: string, type: number) => {
+export const getStat = (id: string, type?: number) => {
     const total: string = `${API_HULIAPI}stat?op=query&name=`,
         day: string = `${API_HULIAPI}stat?op=queryday&name=`;
     return axios.post(`${type ? day : total}${id}`);

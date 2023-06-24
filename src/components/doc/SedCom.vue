@@ -54,9 +54,9 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, inject, watch } from 'vue';
-    const dataRes = ref(inject('dataRes')), method = ref(inject('method')), lib = ref(inject('lib'));
-    // const msg = ref('');
+    import { ref, inject } from 'vue';
+    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'))/* , lib: any = ref(inject('lib')) */;
+    const msg = ref('');
 /*     const tryGet = (data) => {
         lib.value.mdui.confirm('确定要查询吗?')
     } */

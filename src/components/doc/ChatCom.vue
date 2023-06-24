@@ -69,39 +69,43 @@
 </style>
 
 <script setup lang="ts">
-    import { ref, inject, watch } from 'vue';
-    const dataRes = ref(inject('dataRes')), method = ref(inject('method'));
+    import { ref, inject } from 'vue';
+    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
 
-    const messageList = ref([]), msg = ref(''), messageAfter = ref({});
+    const messageList = ref([]), msg = ref(''), messageAfter: any = ref({});
 
-    const send = ref((data) => {
-        messageList.value.push([0, data.msg]);
+    interface obj {
+        msg: string
+    }
+
+    const send = ref((data: obj) => {
+        messageList.value.push([0, data.msg] as never);
         method.value.getData(data);
         msg.value = '';
         return true;
     });
 
-    const update = ref((data) => {
+    const update = ref((data: obj) => {
         dataRes.value = null;
-        messageList.value.push(data);
+        messageList.value.push([1, data.msg] as never);
     })
 
 
-    function* handler(string) {
+    function* handler(string: string) {
         const array = string.split('');
         for (let element of array) {
             yield element;
         }
     }
-    const timer = (iterator, key) => {
+    const timer = (iterator: string | Generator, key?: string) => {
         if (typeof iterator === 'string') {
-            update.value([1, iterator]);
+            update.value({msg: iterator});
             key = iterator;
             iterator = handler(iterator)
         };
         const element = iterator.next();
         if (element.done === false) {
-            messageAfter.value[key] = messageAfter.value[key] ? messageAfter.value[key] += element.value : element.value;
+            messageAfter.value[key as string] = messageAfter.value[key as string] ? messageAfter.value[key as string] += element.value : element.value;
             setTimeout(() => timer(iterator, key), 0.2 * 1000);
         }
     }

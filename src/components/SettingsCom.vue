@@ -7,7 +7,7 @@
             <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">
                 <div v-for="color in ThemeData.layout" :key="color" class="mdui-col">
                     <label class="mdui-radio mdui-m-b-1">
-                        <input v-model="themeSettings.layout" type="radio" name="theme-layout" :value="color.toLowerCase()">
+                        <input v-model="themeSettings.layout" @change="setThemeLayout()" type="radio" name="theme-layout" :value="color.toLowerCase()">
                         <i class="mdui-radio-icon"></i>
                         {{ color }}
                     </label>
@@ -40,8 +40,8 @@
         </div>
         <div class="mdui-divider"></div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple mdui-float-left" @click="useMainStore().setDefaultTheme()">恢复默认主题</button>
-            <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">保存</button>
+            <button class="mdui-btn mdui-ripple mdui-float-left" @click="(useMainStore() as any).setDefaultTheme()">恢复默认主题</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">确定</button>
         </div>
     </div>
 </template>
@@ -50,7 +50,14 @@
     import ThemeData from '../json/ThemeData.json';
     import { useMainStore } from '../store';
     const themeSettings = useMainStore().settings.theme;
-    const handle = (string) => {
+    const handle = (string: string) => {
         return string.toLowerCase().replace(' ', '-')
     };
+    const setThemeLayout = () => {
+        if (themeSettings.layout === 'dark') {
+            document.getElementsByTagName('body')[0].className += ' mdui-theme-layout-dark' 
+        } else {
+            document.getElementsByTagName('body')[0].className = document.getElementsByTagName('body')[0].className.replace('mdui-theme-layout-dark', ''); 
+        };
+    }
 </script>

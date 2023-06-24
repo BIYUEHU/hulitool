@@ -3,7 +3,7 @@ import './style.css'
 import App from './App.vue'
 import Router from './router';
 import { createPinia } from 'pinia';
-import piniaPersist from 'pinia-plugin-persist'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import VueClipboards from 'vue-clipboard2';
 import mdui from 'mdui';
 import '../node_modules/mdui/dist/css/mdui.css';
@@ -14,7 +14,7 @@ import * as Func from './function';
 
 const app = createApp(App);
 const pinia = createPinia();
-pinia.use(piniaPersist);
+pinia.use(piniaPluginPersistedstate);
 
 app.config.globalProperties.$Func = Func;
 app.config.globalProperties.$mdui = mdui;

@@ -24,7 +24,7 @@
         <!-- 左边栏 -->
         <div class="mdui-drawer mdui-shadow-6" id="main-drawer">
             <div class="mdui-list" mdui-collapse="{accordion: true}">
-                <router-link :to="item.path" class="mdui-list-item mdui-ripple" v-for="item in NavData[0]" :key="item">
+                <router-link :to="item.path" class="mdui-list-item mdui-ripple" v-for="item in NavData[0]" :key="(item as any)">
                     <i class="mdui-list-item-icon mdui-icon material-icons">
                         <i style="font-style:normal" :class="item.color">{{ item.icon }}</i>
                     </i>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="mdui-collapse-item-body mdui-list" style="height: auto;">
                         <router-link :to="item.path" class="mdui-list-item mdui-ripple" v-for="item in NavData[1]"
-                            :key="item">
+                            :key="(item as any)">
                             <i class="mdui-list-item-icon mdui-icon material-icons">
                                 <i style="font-style:normal" :class="item.color">{{ item.icon }}</i>
                             </i>

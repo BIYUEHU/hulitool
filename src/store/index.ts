@@ -17,12 +17,7 @@ export const useMainStore = defineStore('main', {
         }
     },
     persist: {
-        enabled: true,
-        strategies: [
-            {
-                storage: localStorage,
-            }
-        ]
+        storage: localStorage
     },
 
     getters: {},

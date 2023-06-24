@@ -1,27 +1,27 @@
 body::before {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
-  width: 0;
-  opacity: .5;
-}
-body {
-  background-color: #fff;
-  background-image: url("background.jpg");
-  background-attachment: fixed;
-  background-size: contain;
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: -1;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    background-image: url(background.jpg);
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+    height: 100vh;
+    opacity: .5;
 }
 
 a {
-  color: rgb(66, 165, 245);
-  text-decoration: none;
+    color: rgb(66, 165, 245);
+    text-decoration: none;
 }
 
 .huli-image-normal {
-  width: 500px;
-  max-width: 90%;
+    width: 500px;
+    max-width: 90%;
 }

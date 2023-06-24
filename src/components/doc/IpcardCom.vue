@@ -33,8 +33,8 @@
 
 <script setup lang="ts">
     import { ref, getCurrentInstance } from 'vue';
-    const { proxy } = getCurrentInstance();
-    const demoParam = ref('0'), demoHtml = ref('');
+    const { proxy } = getCurrentInstance() as any;
+    const demoParam = ref('0')/* , demoHtml = ref('') */;
     const seccendCopy = () => {
         proxy.$copyText(`<img src="https://api.imlolicon.tk/api/ipcard?img=${demoParam}" style="width:500px;max-width: 90%;">`).then(
             proxy.$Func.copyOnSuccess,

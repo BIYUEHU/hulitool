@@ -21,6 +21,6 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, inject, watch } from 'vue';
-    const dataRes = ref(inject('dataRes')), method = ref(inject('method'));
+    import { ref, inject } from 'vue';
+    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
 </script>

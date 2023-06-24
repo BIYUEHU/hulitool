@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="`mdui-theme-layout-${settings.theme.layout} mdui-theme-primary-${settings.theme.primary} mdui-theme-accent-${settings.theme.accent} `">
+        :class="`mdui-theme-layout-${settings.theme.layout === 'light' ? 'light' : 'auto'} mdui-theme-primary-${settings.theme.primary} mdui-theme-accent-${settings.theme.accent} `">
         <headerCom />
         <router-view></router-view>
         <settingsCom />
@@ -8,6 +8,7 @@
 </template>
 
 <style scoped>
+
 </style>
 
 <script setup lang="ts">
@@ -20,5 +21,10 @@
     const headerCom = ref(HeaderCom);
     const settingsCom = ref(SettingsCom);
     const mainStore = useMainStore();
-    const { settings, count } = storeToRefs(mainStore);
+    
+    const { settings } = storeToRefs(mainStore);
+
+    if (settings.value.theme.layout === 'dark') {
+        document.getElementsByTagName('body')[0].className += ' mdui-theme-layout-dark';
+    }
 </script>
