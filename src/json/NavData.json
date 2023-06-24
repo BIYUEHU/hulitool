@@ -1,0 +1,78 @@
+[
+    [
+        {
+            "path": "/",
+            "icon": "home",
+            "name": "主页",
+            "color": "mdui-text-color-cyan-a200"
+        }
+    ],
+    [
+        {
+            "path": "/doc/seimg",
+            "icon": "collections",
+            "name": "随机色图",
+            "color": "mdui-text-color-teal-a400"
+        },
+        {
+            "path": "/doc/hitokoto",
+            "icon": "announcement",
+            "name": "糊狸一言",
+            "color": "mdui-text-color-green-a400"
+        },
+        {
+            "path": "/doc/nemusic",
+            "icon": "library_music",
+            "name": "网易云下载",
+            "color": "mdui-text-color-red-a700"
+        },
+        {
+            "path": "/doc/motdpe",
+            "icon": "find_in_page",
+            "name": "MOTDPE",
+            "color": "mdui-text-color-lime-a700"
+        },
+        {
+            "path": "/doc/bilicomponent",
+            "icon": "attachment",
+            "name": "B站查成分",
+            "color": "mdui-text-color-purple-a700"
+        },
+        {
+            "path": "/doc/bili",
+            "icon": "live_tv",
+            "name": "B站视频解析",
+            "color": "mdui-text-color-blue-a700"
+        },
+        {
+            "path": "/doc/ipcard",
+            "icon": "receipt",
+            "name": "IP签名档",
+            "color": "mdui-text-color-pink-a700"
+        },
+        {
+            "path": "/doc/sed",
+            "icon": "local_library",
+            "name": "社工查询集合",
+            "color": "mdui-text-color-green-800"
+        },
+        {
+            "path": "/doc/qqget",
+            "icon": "person_pin",
+            "name": "QQ昵称图片",
+            "color": "mdui-text-color-light-blue-a400"
+        },
+        {
+            "path": "/doc/translate",
+            "icon": "g_translate",
+            "name": "中英互译",
+            "color": "mdui-text-color-deep-purple-400"
+        },
+        {
+            "path": "/doc/chat",
+            "icon": "chat_bubble",
+            "name": "聊天AI",
+            "color": "mdui-text-color-lime-500"
+        }
+    ]
+]

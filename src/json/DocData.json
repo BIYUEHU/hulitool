@@ -1,0 +1,141 @@
+[
+    {
+        "id": 1,
+        "type": "seimg",
+        "name": "随机色图",
+        "component": "SeimgCom",
+        "http": "getSeimg",
+        "auto": true,
+        "origin": {
+            "from": "IALAPI",
+            "doc": "https://imlolicon.tk/archives/221/",
+            "stat": "seimg_ialapi"
+        }
+    },
+    {
+        "id": 2,
+        "type": "hitokoto",
+        "name": "糊狸一言",
+        "component": "HitokotoCom",
+        "http": "getHitokoto",
+        "auto": true,
+        "origin": {
+            "from": "IALAPI",
+            "doc": "http://imlolicon.tk/archives/129/",
+            "stat": "hitokoto_ialapi"
+        }
+    },
+    {
+        "id": 3,
+        "type": "nemusic",
+        "name": "网易云音乐下载",
+        "component": "NemusicCom",
+        "http": "getNemusic",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/nemusic",
+            "stat": "nemusic_inside"
+        }
+    },
+    {
+        "id": 4,
+        "type": "motdpe",
+        "name": "MOTDPE",
+        "descr": "MCBE服务器状态查询",
+        "component": "MotdpeCom",
+        "http": "getMotdpe",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/motdpe",
+            "stat": "motdpe_inside"
+        }
+    },
+    {
+        "id": 5,
+        "type": "bilicomponent",
+        "name": "B站查成分小助手",
+        "descr": "原本是三相+V的油猴脚本,但这次是API接口版",
+        "component": "BilicomponentCom",
+        "http": "getBilicomponent",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/component",
+            "stat": "component_inside"
+        }
+    },
+    {
+        "id": 6,
+        "type": "bili",
+        "name": "B站视频解析",
+        "descr": "基于官方API",
+        "component": "BiliCom",
+        "http": "getBili",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/biligetv",
+            "stat": "bilidlv_inside"
+        }
+    },
+    {
+        "id": 7,
+        "type": "ipcard",
+        "name": "IP签名档",
+        "descr": "糊狸重制版,11个不同角色风格",
+        "component": "IpcardCom",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/ipcard",
+            "stat": "ipcard_inside"
+        }
+    },
+    {
+        "id": 8,
+        "type": "sed",
+        "name": "社工查询集合",
+        "descr": "支持邮箱,QQ号,LOL,手机号,身份证",
+        "component": "SedCom",
+        "http": "getSed",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/sed",
+            "stat": "sed_inside"
+        }
+    },
+    {
+        "id": 9,
+        "type": "qqget",
+        "name": "QQ昵称图片获取",
+        "component": "QqgetCom",
+        "http": "getQq",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/qqget",
+            "stat": "qqget_inside"
+        }
+    },
+    {
+        "id": 10,
+        "type": "translate",
+        "name": "中英互译",
+        "component": "TranslateCom",
+        "http": "getTranslate",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/fanyi",
+            "stat": "fanyi_inside"
+        }
+    },
+    {
+        "id": 11,
+        "type": "chat",
+        "name": "聊天AI",
+        "descr": "这个是ISLA酱~(不是GPT)",
+        "component": "ChatCom",
+        "http": "getChat",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/chat",
+            "stat": "chat_inside"
+        }
+    }
+]

@@ -1,0 +1,44 @@
+{
+    "layout": [
+        "Auto", "Light", "Dark"
+    ],
+    "primary": [
+        "Amber",
+        "Blue",
+        "Blue Grey",
+        "Brown",
+        "Cyan",
+        "Deep Orange",
+        "Deep Purple",
+        "Green",
+        "Grey",
+        "Indigo",
+        "Light Blue",
+        "Light Green",
+        "Lime",
+        "Orange",
+        "Pink",
+        "Purple",
+        "Red",
+        "Teal",
+        "Yellow"
+    ],
+    "accent": [
+        "Amber",
+        "Blue",
+        "Cyan",
+        "Deep Orange",
+        "Deep Purple",
+        "Green",
+        "Indigo",
+        "Light Blue",
+        "Light Green",
+        "Lime",
+        "Orange",
+        "Pink",
+        "Purple",
+        "Red",
+        "Teal",
+        "Yellow"
+    ]
+}
