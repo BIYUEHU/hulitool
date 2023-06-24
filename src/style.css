@@ -7,8 +7,8 @@ body::before {
   opacity: .5;
 }
 body {
-  /* background-color: #fff; */
-  /* background-image: url("background.jpg"); */
+  background-color: #fff;
+  background-image: url("background.jpg");
   background-attachment: fixed;
   background-size: contain;
   background-position: 100% 100%;
