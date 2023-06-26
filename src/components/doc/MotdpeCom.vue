@@ -24,7 +24,7 @@
         </div>
         <div class="mdui-row-xs-1">
             <div class="mdui-col">
-                <button @click="(ip && method.getData({ ip, port: port ? port : (type === 'be' ? 19132 : 25565), type }, )) || method.tips(1)"
+                <button @click="(ip && getData({ ip, port: port ? port : (type === 'be' ? 19132 : 25565), type }, )) || lib.func.tips(1)"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">点击查询</button>
             </div>
         </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="mdui-card-content">
                 <div v-if="dataRes.data.status === 'online'">
-                    {{ method.tips('服务器在线', 'lightgreen') }}
+                    {{ lib.func.tips('服务器在线', 'lightgreen') }}
                     <strong>状态:</strong><span class="mdui-text-color-green">在线</span><br>
                     <strong>域名/IP:</strong>{{ dataRes.data.ip }}
                     <strong>端口:</strong>{{ dataRes.data.port }}<br>
@@ -58,7 +58,7 @@
                     </span>
                 </div>
                 <div v-else-if="dataRes.data.status === 'offline'">
-                    {{ method.tips('服务器离线!', 'red'), dataRes = null  }}
+                    {{ lib.func.tips('服务器离线!', 'red'), dataRes = null  }}
                     状态:<span class="mdui-text-color-red">离线</span><br>
                     <strong>域名/IP:</strong>{{ ip }}
                     <strong>端口:</strong>{{ port }}
@@ -72,6 +72,6 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData')), lib: any = ref(inject('lib'));
 const type = ref('be'),ip = ref(''), port = ref();
 </script>

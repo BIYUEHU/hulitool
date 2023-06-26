@@ -1,6 +1,6 @@
 {
     "layout": [
-        "Auto", "Light", "Dark"
+        "Auto", "Light", "Dark", "Time"
     ],
     "primary": [
         "Amber",

@@ -1,6 +1,6 @@
 <template>
     <div class="mdui-text-center mdui-center">
-        <button @click="method.getData()"
+        <button @click="getData()"
             class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">再来一张</button>
         <br>
         <div class="mdui-text-valign" v-if="dataRes">
@@ -22,5 +22,5 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData'));
 </script>

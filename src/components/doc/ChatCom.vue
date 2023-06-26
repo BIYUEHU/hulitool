@@ -4,7 +4,7 @@
             <input class="mdui-textfield-input" v-model="msg" placeholder="消息内容" />
         </div>
         <div class="mdui-row-xs-1 mdui-col-xs-1">
-            <button class="mdui-btn btn" @click="(msg && send({ msg })) || method.tips(1)"><i
+            <button class="mdui-btn btn" @click="(msg && send({ msg })) || lib.func.tips(1)"><i
                     class="mdui-icon material-icons"><svg class="icon"
                         style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
                         viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4602">
@@ -70,7 +70,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData')), lib: any = ref(inject('lib'));
 
 const messageList = ref([]), msg = ref(''), messageAfter: any = ref({});
 
@@ -80,7 +80,7 @@ interface obj {
 
 const send = ref((data: obj) => {
     messageList.value.push([0, data.msg] as never);
-    method.value.getData(data);
+    getData.value(data);
     msg.value = '';
     return true;
 });

@@ -7,14 +7,12 @@
                     dataRes.data.from }}</h3>
             <h4 class="mdui-text-right mdui-text-color-"><small>类型:{{ dataRes.data.type }}</small></h4>
         </div>
-        <button @click="method.getData()"
+        <button @click="getData()"
             class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">再来一句</button>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
-console.log();
-
+const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData'));
 </script>

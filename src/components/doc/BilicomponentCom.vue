@@ -7,7 +7,7 @@
         </div>
         <div class="mdui-row-xs-1">
             <div class="mdui-col">
-                <button @click="(uid && method.getData({ uid })) || method.tips(1)"
+                <button @click="(uid && getData({ uid })) || lib.func.tips(1)"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">查成分</button>
             </div>
         </div>
@@ -29,6 +29,6 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData')), lib: any = ref(inject('lib'));
 const uid = ref('');
 </script>

@@ -53,24 +53,7 @@ const progressView = () => progress.value = !progress.value;
 /* 提示消息 */
 const { proxy } = getCurrentInstance() as any;
 
-const tips = (code: number | string, color?: string) => {
-    let message: number | string = '';
-    switch (code) {
-        case 1:
-            message = '缺少必要参数!';
-            break;
-        case 2:
-            message = '参数错误!';
-            break;
-        case 3:
-            message = '接口错误';
-            break;
-        default:
-            message = code;
-    }
-    if (color) message = `<span style="color:${color}">${message}</span>`;
-    proxy.$mdui.snackbar(message);
-}
+
 
 /* 根据文档数据设置对应的Stat */
 const getStat = () => {
@@ -96,7 +79,6 @@ const getData = (dataReq?: any, auto: Boolean = true) => {
     if (Array.isArray(Promise)) {
         const Res: any[] = [];
         for (let init = 0; init < Promise.length; init++) {
-            // if (Promise[init] !== null && Promise[init].then) {
             Promise[init].then((res: obj) => {
                 Res[init] = res.data;
                 if (init === Promise.length - 1) {
@@ -104,7 +86,6 @@ const getData = (dataReq?: any, auto: Boolean = true) => {
                     progressView()
                 };
             });
-            // };
         }
     } else {
         Promise.then((res: obj) => {
@@ -121,9 +102,9 @@ const main = () => {
     dataRes.value = Component.value = dataDoc.value = null;
 
     /* 向子组件传值 */
-    provide('dataRes', dataRes)
-    provide('method', { getData, progressView, tips })
-    provide('lib', { mdui: proxy.$mdui });
+    provide('dataRes', dataRes);
+    provide('getData', getData);
+    provide('lib', { mdui: proxy.$mdui, func: proxy.$func });
 
     dataDoc.value = getDoc();
 

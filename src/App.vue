@@ -1,6 +1,6 @@
 <template>
     <div :style="`--background-image: url(${settings.background ? settings.background : '/background.jpg'});`"
-        :class="`bg mdui-theme-layout-${settings.theme.layout === 'light' ? 'light' : 'auto'} mdui-theme-primary-${settings.theme.primary} mdui-theme-accent-${settings.theme.accent} `">
+        :class="`bg mdui-theme-primary-${settings.theme.primary} mdui-theme-accent-${settings.theme.accent} `">
         <headerCom />
         <router-view></router-view>
         <settingsCom />
@@ -31,19 +31,36 @@ const { settings } = storeToRefs(mainStore);
 
 const setThemeLayout = () => {
     const bodyClass: DOMTokenList = proxy.$el.offsetParent.classList;
-
-    if (settings.value.theme.layout === 'dark') {
-        bodyClass.add('mdui-theme-layout-dark')
-    } else {
-        bodyClass.remove('mdui-theme-layout-dark');
-    };
+    bodyClass.remove('mdui-theme-layout-auto');
+    bodyClass.remove('mdui-theme-layout-light');
+    bodyClass.remove('mdui-theme-layout-dark');
+    switch (settings.value.theme.layout) {
+        case 'light':
+            break;
+        case 'dark':
+            bodyClass.add('mdui-theme-layout-dark')
+            break;
+        case 'time':
+            const hours: number = new Date().getHours();
+            if (hours >= 7 && hours <= 19) {
+                bodyClass.add('mdui-theme-layout-light');
+            } else {
+                bodyClass.add('mdui-theme-layout-dark');
+            }
+            break;
+        default:
+            bodyClass.add('mdui-theme-layout-auto');
+            break;
+    }
 }
 
-onMounted(() => setThemeLayout())
-
+onMounted(() => setThemeLayout());
 provide('settings', settings);
+provide('mainStore', mainStore);
 provide('settingsMethod', {
     setThemeLayout
 });
+
+
 
 </script>

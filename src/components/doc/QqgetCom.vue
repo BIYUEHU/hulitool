@@ -13,7 +13,7 @@
         </div>
         <div class="mdui-row-xs-1">
             <div class="mdui-col-xs-1">
-                <button @click="(qq && method.getData({ qq })) || method.tips(1)"
+                <button @click="(qq && getData({ qq })) || lib.func.tips(1)"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">点击查询</button>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     <strong>昵称:{{ dataRes.data.name }}</strong><br>
                     <strong>头像:</strong><img :src="dataRes.data.imgurl" />
                 </span>
-                <span v-else>{{ method.tips(2), dataRes = null }}</span>
+                <span v-else>{{ lib.func.tips(2), dataRes = null }}</span>
             </div>
             <br>
             <div class="mdui-card-header-subtitle"></div>
@@ -39,6 +39,6 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData')), lib: any = ref(inject('lib'));
 const qq = ref('');
 </script>
