@@ -3,8 +3,7 @@
         <!-- 标题栏 -->
         <header class="appbar mdui-appbar mdui-appbar-fixed">
             <div class="mdui-toolbar mdui-color-theme">
-                <span mdui-drawer="{target: '#main-drawer'}"
-                    class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white">
+                <span mdui-drawer="{target: '#main-drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white">
                     <i class="mdui-icon material-icons">menu</i>
                 </span>
 
@@ -23,27 +22,28 @@
 
         <!-- 左边栏 -->
         <div class="mdui-drawer mdui-shadow-6" id="main-drawer">
-            <div class="mdui-list" mdui-collapse="{accordion: true}">
-                <router-link :to="item.path" class="mdui-list-item mdui-ripple" v-for="item in NavData[0]" :key="(item as any)">
+            <div class="mdui-list" mdui-collapse="{accordion: true}" v-for="item in NavData" :key="(item as any)">
+                <router-link v-if="item.path" :to="item.path" class="mdui-list-item mdui-ripple">
                     <i class="mdui-list-item-icon mdui-icon material-icons">
                         <i style="font-style:normal" :class="item.color">{{ item.icon }}</i>
                     </i>
                     <div class="mdui-list-item-content">{{ item.name }}</div>
                 </router-link>
-                <div class="mdui-collapse-item">
+                <div v-if="item.content" class="mdui-collapse-item">
                     <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                        <i
-                            class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple-700">cloud_circle</i>
-                        <div class="mdui-list-item-content">在线接口</div>
+                        <i class="mdui-list-item-icon mdui-icon material-icons">
+                            <i style="font-style:normal" :class="item.color">{{ item.icon }}</i>
+                        </i>
+                        <div class="mdui-list-item-content">{{ item.name }}</div>
                         <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
                     </div>
-                    <div class="mdui-collapse-item-body mdui-list" style="height: auto;">
-                        <router-link :to="item.path" class="mdui-list-item mdui-ripple" v-for="item in NavData[1]"
-                            :key="(item as any)">
-                            <i class="mdui-list-item-icon mdui-icon material-icons">
-                                <i style="font-style:normal" :class="item.color">{{ item.icon }}</i>
+                    <div class="mdui-collapse-item-body mdui-list">
+                        <router-link v-for="item2 in item.content" :key="(item2 as any)" :to="item2.path"
+                            class="mdui-list-item mdui-ripple">
+                            <i class=" mdui-list-item-icon mdui-icon material-icons">
+                                <i style="font-style:normal" :class="item2.color">{{ item2.icon }}</i>
                             </i>
-                            <div class="mdui-list-item-content">{{ item.name }}</div>
+                            <div class="mdui-list-item-content">{{ item2.name }}</div>
                         </router-link>
                     </div>
                 </div>
@@ -53,5 +53,8 @@
 </template>
 
 <script setup lang="ts">
-    import NavData from '../json/NavData.json';
+import NavData from '../json/NavData.json';
+    // import { getCurrentInstance } from 'vue';
+    // const { poxry } = getCurrentInstance() as unknown;
+    // poxry.$mdui
 </script>

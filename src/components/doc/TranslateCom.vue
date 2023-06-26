@@ -7,7 +7,7 @@
 
         <div class="mdui-row-xs-1">
             <div class="mdui-col-xs-1">
-                <button @click="(msg && method.getData({msg})) || method.tips(1)"
+                <button @click="(msg && method.getData({ msg })) || method.tips(1)"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">点击翻译</button>
             </div>
         </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, inject } from 'vue';
-    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
-    const msg = ref('');
+import { ref, inject } from 'vue';
+const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+const msg = ref('');
 </script>

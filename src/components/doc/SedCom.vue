@@ -7,7 +7,7 @@
         </div>
         <div class="mdui-row-xs-1">
             <div class="mdui-col-xs-1">
-                <button @click="(msg && method.getData({msg})) || method.tips(1)"
+                <button @click="(msg && method.getData({ msg })) || method.tips(1)"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">社工查询</button>
             </div>
         </div>
@@ -54,9 +54,9 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, inject } from 'vue';
-    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'))/* , lib: any = ref(inject('lib')) */;
-    const msg = ref('');
+import { ref, inject } from 'vue';
+const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'))/* , lib: any = ref(inject('lib')) */;
+const msg = ref('');
 /*     const tryGet = (data) => {
         lib.value.mdui.confirm('确定要查询吗?')
     } */

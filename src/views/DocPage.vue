@@ -53,7 +53,7 @@ const progressView = () => progress.value = !progress.value;
 /* 提示消息 */
 const { proxy } = getCurrentInstance() as any;
 
-const tips = (code: number | string) => {
+const tips = (code: number | string, color?: string) => {
     let message: number | string = '';
     switch (code) {
         case 1:
@@ -68,6 +68,7 @@ const tips = (code: number | string) => {
         default:
             message = code;
     }
+    if (color) message = `<span style="color:${color}">${message}</span>`;
     proxy.$mdui.snackbar(message);
 }
 

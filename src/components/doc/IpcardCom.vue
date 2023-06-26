@@ -16,7 +16,8 @@
             <option value="10">阿尔托莉雅</option>
             <option value="11">宫水三叶</option>
         </select><br>
-        <img :src="'https://api.imlolicon.tk/api/ipcard?apikey=b699b2d60915d83f3723272855240c4c&img=' + demoParam" class="huli-image-normal">
+        <img :src="'https://api.imlolicon.tk/api/ipcard?apikey=b699b2d60915d83f3723272855240c4c&img=' + demoParam"
+            class="huli-image-normal">
         <div class="mdui-textfield mdui-textfield-not-empty mdui-row">
             <label class="mdui-textfield-label">内嵌代码</label>
             <div class="mdui-col-xs-9">
@@ -32,16 +33,16 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, getCurrentInstance } from 'vue';
-    const { proxy } = getCurrentInstance() as any;
-    const demoParam = ref('0')/* , demoHtml = ref('') */;
-    const seccendCopy = () => {
-        proxy.$copyText(`<img src="https://api.imlolicon.tk/api/ipcard?img=${demoParam}" style="width:500px;max-width: 90%;">`).then(
-            proxy.$Func.copyOnSuccess,
-            proxy.$Func.copyOnError
-        )
-    }
+import { ref, getCurrentInstance } from 'vue';
+const { proxy } = getCurrentInstance() as any;
+const demoParam = ref('0')/* , demoHtml = ref('') */;
+const seccendCopy = () => {
+    proxy.$copyText(`<img src="https://api.imlolicon.tk/api/ipcard?img=${demoParam}" style="width:500px;max-width: 90%;">`).then(
+        proxy.$Func.copyOnSuccess,
+        proxy.$Func.copyOnError
+    )
+}
 
-    new proxy.$mdui.Select('#demo');/* 
+new proxy.$mdui.Select('#demo');/* 
             this.demoHtml = `<img src="https://api.imlolicon.tk/api/ipcard?img=${demoParam}" style="width:500px;max-width: 90%;">` */
 </script>

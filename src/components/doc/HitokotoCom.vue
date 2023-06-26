@@ -4,7 +4,7 @@
             <h2><strong>{{ dataRes.data.msg }}</strong></h2>
             <h3 v-if="dataRes.data.from && dataRes.data.from !== ' '"
                 class="mdui-text-right mdui-text-color-{{ dataOther.color }}">——{{
-                dataRes.data.from }}</h3>
+                    dataRes.data.from }}</h3>
             <h4 class="mdui-text-right mdui-text-color-"><small>类型:{{ dataRes.data.type }}</small></h4>
         </div>
         <button @click="method.getData()"
@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, inject } from 'vue';
-    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
-    console.log();
-    
+import { ref, inject } from 'vue';
+const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+console.log();
+
 </script>

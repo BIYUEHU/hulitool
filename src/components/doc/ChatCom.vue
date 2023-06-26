@@ -1,11 +1,11 @@
 <template>
-    <div style="max-width: 98%;width: 700px;">
-        <div class="mdui-col-xs-11 mdui-textfield">
+    <div style="width: 90%;max-width: 700px;">
+        <div class="mdui-col-xs-10 mdui-textfield">
             <input class="mdui-textfield-input" v-model="msg" placeholder="消息内容" />
         </div>
         <div class="mdui-row-xs-1 mdui-col-xs-1">
-            <button class="mdui-btn btn" @click="(msg && send({msg})) || method.tips(1)"><i class="mdui-icon material-icons"><svg
-                        class="icon"
+            <button class="mdui-btn btn" @click="(msg && send({ msg })) || method.tips(1)"><i
+                    class="mdui-icon material-icons"><svg class="icon"
                         style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
                         viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4602">
                         <path
@@ -42,71 +42,71 @@
 </template>
 
 <style scoped>
-    .btn {
-        border: 0px;
-        background-color: white;
-        margin-top: 18px;
-    }
+.btn {
+    border: 0px;
+    background-color: white;
+    margin-top: 18px;
+}
 
-    .btn:hover {
-        box-shadow: 0px 1px 5px rgb(229,229,229);
-    }
+.btn:hover {
+    box-shadow: 0px 1px 5px rgb(229, 229, 229);
+}
 
-    .snackbar-me {
-        text-align: right;
-        background-color: rgb(18, 183, 245);
-        color: white;
-        padding: 8px;
-        border-radius: 9%;
-    }
+.snackbar-me {
+    text-align: right;
+    background-color: rgb(18, 183, 245);
+    color: white;
+    padding: 8px;
+    border-radius: 9%;
+}
 
-    .snackbar-bot {
-        text-align: right;
-        background-color: rgb(229, 227, 225);
-        padding: 8px;
-        border-radius: 9%;
-    }
+.snackbar-bot {
+    text-align: right;
+    background-color: rgb(229, 227, 225);
+    padding: 8px;
+    border-radius: 9%;
+}
 </style>
 
 <script setup lang="ts">
-    import { ref, inject } from 'vue';
-    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+import { ref, inject } from 'vue';
+const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
 
-    const messageList = ref([]), msg = ref(''), messageAfter: any = ref({});
+const messageList = ref([]), msg = ref(''), messageAfter: any = ref({});
 
-    interface obj {
-        msg: string
+interface obj {
+    msg: string
+}
+
+const send = ref((data: obj) => {
+    messageList.value.push([0, data.msg] as never);
+    method.value.getData(data);
+    msg.value = '';
+    return true;
+});
+
+const update = ref((data: obj) => {
+    dataRes.value = null;
+    messageList.value.push([1, data.msg] as never);
+})
+
+
+function* handler(string: string) {
+    const array = string.split('');
+    for (let element of array) {
+        yield element;
     }
-
-    const send = ref((data: obj) => {
-        messageList.value.push([0, data.msg] as never);
-        method.value.getData(data);
-        msg.value = '';
-        return true;
-    });
-
-    const update = ref((data: obj) => {
-        dataRes.value = null;
-        messageList.value.push([1, data.msg] as never);
-    })
-
-
-    function* handler(string: string) {
-        const array = string.split('');
-        for (let element of array) {
-            yield element;
-        }
+}
+const timer = (iterator: string | Generator, key?: string) => {
+    if (typeof iterator === 'string') {
+        update.value({ msg: iterator });
+        key = iterator;
+        iterator = handler(iterator)
+    };
+    const element = iterator.next();
+    if (element.done === false) {
+        messageAfter.value[key as string] = messageAfter.value[key as string] ? messageAfter.value[key as string] += element.value : element.value;
+        setTimeout(() => timer(iterator, key), 0.2 * 1000);
     }
-    const timer = (iterator: string | Generator, key?: string) => {
-        if (typeof iterator === 'string') {
-            update.value({msg: iterator});
-            key = iterator;
-            iterator = handler(iterator)
-        };
-        const element = iterator.next();
-        if (element.done === false) {
-            messageAfter.value[key as string] = messageAfter.value[key as string] ? messageAfter.value[key as string] += element.value : element.value;
-            setTimeout(() => timer(iterator, key), 0.2 * 1000);
-        }
-    }
+}
 </script>

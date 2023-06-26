@@ -10,7 +10,7 @@
                 <div class="mdui-text-color-green">PID:{{ dataRes.data[0].pid }} 标题:{{
                     dataRes.data[0].title }}</div>
                 <div class="mdui-text-color-orange">标签:<span v-for="tag of dataRes.data[0].tags" :key="tag">{{ tag
-                        }}、</span></div>
+                }}、</span></div>
             </strong>
             <a target="_blank" :href="dataRes.data[0]?.url">
                 <img style="max-width: 95%;max-height: 590px;" class="mdui-center" :src="dataRes.data[0].url" />
@@ -21,6 +21,6 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, inject } from 'vue';
-    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+import { ref, inject } from 'vue';
+const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
 </script>

@@ -2,10 +2,11 @@
 import { defineStore } from 'pinia';
 
 const settings = {
+    background: "",
     theme: {
         layout: "auto",
-        primary: "blue-grey",
-        accent: "red"
+        primary: "cyan",
+        accent: "light-green"
     }
 }
 

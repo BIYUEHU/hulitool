@@ -1,7 +1,7 @@
 import axios from "axios";
 
 interface obj {
-    [key:string]: any
+    [key: string]: any
 }
 
 const API_IAL: string = 'https://imlolicon.tk/api/';
@@ -16,41 +16,41 @@ export const getSeimg = () => {
 }
 
 export const getNemusic = (data: obj) => {
-    return axios.get(`${API_HULIAPI}nemusic`, {params: data});
+    return axios.get(`${API_HULIAPI}nemusic`, { params: data });
 }
 
 export const getMotdpe = (data: obj) => {
-    return axios.get(`${API_HULIAPI}motdpe`, {params: data});
+    return axios.get(`${API_HULIAPI}${ data.type === 'be' ? 'motdpe' : 'motd' }`, { params: data });
 }
 
 export const getBili = (data: obj) => {
-    const res = axios.get(`${API_HULIAPI}biligetv`, {params: data}),
-        res2 = axios.get(`${API_HULIAPI}bilidlv`, {params: data});
+    const res = axios.get(`${API_HULIAPI}biligetv`, { params: data }),
+        res2 = axios.get(`${API_HULIAPI}bilidlv`, { params: data });
     return [res, res2];
 }
 
 export const getBilicomponent = (data: obj) => {
     (data as any)['format'] = 'html';
-    return axios.get(`${API_HULIAPI}component`, {params: data});
+    return axios.get(`${API_HULIAPI}component`, { params: data });
 }
 
 export const getSed = (data: obj) => {
-    const res = axios.get(`${API_HULIAPI}sed`, {params: data});
-        // res2 = data.msg.length === 18 ? axios.get(`${API_HULIAPI}idcard`, {params: data}) : null;
+    const res = axios.get(`${API_HULIAPI}sed`, { params: data });
+    // res2 = data.msg.length === 18 ? axios.get(`${API_HULIAPI}idcard`, {params: data}) : null;
     // return [res, res2];
     return res;
 }
 
 export const getQq = (data: obj) => {
-    return axios.get(`${API_HULIAPI}qqget`, {params: data});
+    return axios.get(`${API_HULIAPI}qqget`, { params: data });
 }
 
 export const getTranslate = (data: obj) => {
-    return axios.get(`${API_HULIAPI}fanyi`, {params: data});
+    return axios.get(`${API_HULIAPI}fanyi`, { params: data });
 }
 
 export const getChat = (data: obj) => {
-    return axios.get(`${API_HULIAPI}chat`, {params: data});
+    return axios.get(`${API_HULIAPI}chat`, { params: data });
 }
 
 export const getStat = (id: string, type?: number) => {

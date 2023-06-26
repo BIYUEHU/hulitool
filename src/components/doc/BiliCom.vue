@@ -7,7 +7,7 @@
         </div>
         <div class="mdui-row-xs-1">
             <div class="mdui-col">
-                <button @click="msg && method.getData({msg})"
+                <button @click="msg && method.getData({ msg })"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">点击解析</button>
             </div>
         </div>
@@ -20,6 +20,7 @@
             </div>
             <div class="mdui-card-content">
                 <div v-if="dataRes[0] && dataRes[0].code === 500">
+                    {{ method.tips('解析成功!', 'rgb(2,181,218)') }}
                     <strong class="mdui-text-color-blue">解析成功</strong><br>
                     <strong>BV号:</strong>{{ dataRes[0].data.bvid }}
                     <strong>AV号:</strong>{{ dataRes[0].data.aid }}
@@ -40,6 +41,7 @@
                     <strong>视频下载:</strong><a target="_blank" :href="dataRes[1].data.url">点击此处</a><br>
                 </div>
                 <div v-else>
+                    {{ method.tips('解析失败', 'pink'), dataRes = null }}
                     <strong class="mdui-text-color-red">解析失败</strong><br>
                 </div>
             </div>
@@ -50,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, inject } from 'vue';
-    const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
-    const msg = ref('');
+import { ref, inject } from 'vue';
+const dataRes: any = ref(inject('dataRes')), method: any = ref(inject('method'));
+const msg = ref('');
 </script>
