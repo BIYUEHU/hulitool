@@ -108,13 +108,17 @@ const main = () => {
 
     dataDoc.value = getDoc();
 
+    if (!dataDoc.value) {
+        proxy.$router.push('/404')
+        return;
+    }
     loadCom().then(() => {
         Component.value = defineAsyncComponent(() => loadCom());
-    }).catch(() => {
-        console.log(`${dataDoc.value.component} 组件不存在!!!`)
+    }).catch((err) => {
+        console.log(`${dataDoc.value.component} 组件不存在!!!`, err)
     });
 
-    getStat();
+    dataDoc.value.origin && getStat();
     getData(null, !!dataDoc.value.auto);
 }
 

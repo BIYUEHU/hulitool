@@ -24,15 +24,18 @@
         <div class="mdui-drawer mdui-shadow-6" id="main-drawer">
             <div class="mdui-list" mdui-collapse="{accordion: true}" v-for="item in NavData" :key="(item as any)">
                 <router-link v-if="item.path" :to="item.path" class="mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons">
-                        <i style="font-style:normal" :class="item.color">{{ item.icon }}</i>
+                    <i class="mdui-list-item-icon mdui-icon material-icons" :class="item.color">
+                        <i v-if="item.icon.length < 20" style="font-style:normal">{{ item.icon }}</i>
+                        <span v-else v-html="item.icon"></span>
                     </i>
                     <div class="mdui-list-item-content">{{ item.name }}</div>
                 </router-link>
                 <div v-if="item.content" class="mdui-collapse-item">
                     <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                        <i class="mdui-list-item-icon mdui-icon material-icons">
-                            <i style="font-style:normal" :class="item.color">{{ item.icon }}</i>
+                        <i class="mdui-list-item-icon mdui-icon material-icons" :class="item.color">
+                            <i v-if="item.icon.length < 20" style="font-style:normal">{{ item.icon
+                            }}</i>
+                            <span v-else v-html="item.icon"></span>
                         </i>
                         <div class="mdui-list-item-content">{{ item.name }}</div>
                         <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
@@ -40,10 +43,16 @@
                     <div class="mdui-collapse-item-body mdui-list">
                         <router-link v-for="item2 in item.content" :key="(item2 as any)" :to="item2.path"
                             class="mdui-list-item mdui-ripple">
-                            <i class=" mdui-list-item-icon mdui-icon material-icons">
-                                <i style="font-style:normal" :class="item2.color">{{ item2.icon }}</i>
+                            <i v-if="(item2 as any).icon" class=" mdui-list-item-icon mdui-icon material-icons" :class="(item2 as any).color">
+                                <i v-if="(item2 as any).icon.length < 20" style="font-style:normal">{{
+                                    (item2 as any).icon }}</i>
+                                <span v-else v-html="(item2 as any).icon"></span>
                             </i>
-                            <div class="mdui-list-item-content">{{ item2.name }}</div>
+                            <span v-if="(item2 as any).descr">
+                                <div class="mdui-list-item-title">{{ item2.name }}</div>
+                                <div class="mdui-list-item-text">{{ (item2 as any).descr }}</div>
+                            </span>
+                            <div v-else class="mdui-list-item-content">{{ item2.name }}</div>
                         </router-link>
                     </div>
                 </div>

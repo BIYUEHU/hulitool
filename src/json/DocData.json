@@ -27,23 +27,23 @@
     },
     {
         "id": 3,
-        "type": "nemusic",
+        "type": "netease",
         "name": "网易云音乐下载",
-        "component": "NemusicCom",
-        "http": "getNemusic",
+        "component": "NeteaseCom",
+        "http": "getNetease",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/nemusic",
-            "stat": "nemusic_inside"
+            "doc": "https://api.imlolicon.tk/iluh/netease",
+            "stat": "netease_inside"
         }
     },
     {
         "id": 4,
-        "type": "motdpe",
-        "name": "MOTDPE",
-        "descr": "MCBE服务器状态查询",
-        "component": "MotdpeCom",
-        "http": "getMotdpe",
+        "type": "mcmotd",
+        "name": "MCMOTD",
+        "descr": "MCBE&JE服务器状态查询",
+        "component": "McmotdCom",
+        "http": "getMcmotd",
         "origin": {
             "from": "HULIAPI",
             "doc": "https://api.imlolicon.tk/iluh/motdpe",
@@ -137,5 +137,89 @@
             "doc": "https://api.imlolicon.tk/iluh/chat",
             "stat": "chat_inside"
         }
+    },
+    {
+        "id": 12,
+        "type": "code_html",
+        "name": "HTML",
+        "descr": "格式化 / 压缩",
+        "component": "CodeHtmlCom"
+    },
+    {
+        "id": 13,
+        "type": "code_css",
+        "name": "CSS",
+        "descr": "格式化 / 压缩",
+        "component": "CodeCssCom"
+    },
+    {
+        "id": 14,
+        "type": "code_js",
+        "name": "JS",
+        "descr": "格式化 / 压缩 / 混淆",
+        "component": "CodeJsCom"
+    },
+    {
+        "id": 16,
+        "type": "code_json",
+        "name": "HTML",
+        "descr": "检验 / 格式化 / 压缩 / 编码",
+        "component": "CodeJsonCom"
+    },
+    {
+        "id": 17,
+        "type": "lock_unicode",
+        "name": "Unicode",
+        "descr": "HTML实体转换",
+        "component": "LockUnicodeCom"
+    },
+    {
+        "id": 18,
+        "type": "lock_base64",
+        "name": "Base64",
+        "descr": "Base64()",
+        "component": "LockBase64Com"
+    },
+    {
+        "id": 19,
+        "type": "lock_url",
+        "name": "URL",
+        "descr": "地址链接转义",
+        "component": "LockUrlCom"
+    },
+    {
+        "id": 20,
+        "type": "lock_text",
+        "name": "文本转义",
+        "descr": "经典的反斜杠",
+        "component": "LockTextCom"
+    },
+    {
+        "id": 21,
+        "type": "lock_hash",
+        "name": "哈希",
+        "descr": "MD5",
+        "component": "LockHashCom"
+    },
+    {
+        "id": 22,
+        "type": "img_png2ico",
+        "name": "ICO",
+        "descr": "PNG转ICO",
+        "component": "ImgPng2IcoCom"
+    },
+    {
+        "id": 23,
+        "type": "img_base64",
+        "name": "Base64&Img",
+        "descr": "图片转Base64",
+        "component": "ImgBase64Com"
+    },
+    {
+        "id": 24,
+        "type": "img_qrcode",
+        "name": "QR Code",
+        "descr": "二维码生成",
+        "component": "ImgQrcodeCom"
     }
 ]

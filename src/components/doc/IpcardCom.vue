@@ -40,8 +40,8 @@ const { proxy } = getCurrentInstance() as any;
 const demoParam = ref('0'), url = 'https://api.imlolicon.tk/api/ipcard?apikey=b699b2d60915d83f3723272855240c4c&img=';
 const copy = () => {
     proxy.$copyText(`<img src="${url}${demoParam.value}" style="width:500px;max-width: 90%;" />`).then(
-        proxy.$Func.copyOnSuccess,
-        proxy.$Func.copyOnError
+        proxy.$func.copyOnSuccess,
+        proxy.$func.copyOnError
     )
 }
 

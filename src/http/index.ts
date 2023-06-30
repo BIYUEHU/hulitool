@@ -15,11 +15,11 @@ export const getSeimg = () => {
     return axios.get(`${API_IAL}seimg/v2/`);
 }
 
-export const getNemusic = (data: obj) => {
-    return axios.get(`${API_HULIAPI}nemusic`, { params: data });
+export const getNetease = (data: obj) => {
+    return axios.get(`${API_HULIAPI}netease`, { params: data });
 }
 
-export const getMotdpe = (data: obj) => {
+export const getMcmotd = (data: obj) => {
     return axios.get(`${API_HULIAPI}${ data.type === 'be' ? 'motdpe' : 'motd' }`, { params: data });
 }
 

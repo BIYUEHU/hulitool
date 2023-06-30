@@ -64,5 +64,4 @@ const handle = (string: string) => {
 };
 const method = inject('settingsMethod') as any;
 
-
 </script>
