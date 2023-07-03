@@ -141,7 +141,7 @@
     {
         "id": 12,
         "type": "code_html",
-        "name": "HTML&XML",
+        "name": "HTML",
         "descr": "格式化 / 压缩",
         "component": "CodeHtmlCom"
     },
@@ -156,42 +156,35 @@
         "id": 14,
         "type": "code_js",
         "name": "JS",
-        "descr": "运行 / 格式化 / 压缩 / 混淆",
+        "descr": "格式化 / 压缩 / 混淆",
         "component": "CodeJsCom"
     },
     {
-        "id": 15,
+        "id": 16,
         "type": "code_json",
-        "name": "JSON",
+        "name": "HTML",
         "descr": "检验 / 格式化 / 压缩 / 编码",
         "component": "CodeJsonCom"
     },
     {
-        "id": 16,
+        "id": 17,
         "type": "lock_unicode",
         "name": "Unicode",
-        "descr": "万国码转换",
+        "descr": "HTML实体转换",
         "component": "LockUnicodeCom"
     },
     {
-        "id": 17,
+        "id": 18,
         "type": "lock_base64",
         "name": "Base64",
         "descr": "Base64()",
         "component": "LockBase64Com"
     },
     {
-        "id": 18,
-        "type": "lock_html",
-        "name": "HTML实体",
-        "descr": "HTML实体转义",
-        "component": "LockHtmlCom"
-    },
-    {
         "id": 19,
         "type": "lock_url",
         "name": "URL",
-        "descr": "地址链接编码",
+        "descr": "地址链接转义",
         "component": "LockUrlCom"
     },
     {
@@ -210,27 +203,20 @@
     },
     {
         "id": 22,
-        "type": "lock_lock",
-        "name": "加密",
-        "descr": "",
-        "component": "LockLockCom"
-    },
-    {
-        "id": 23,
         "type": "img_png2ico",
         "name": "ICO",
         "descr": "PNG转ICO",
         "component": "ImgPng2IcoCom"
     },
     {
-        "id": 24,
+        "id": 23,
         "type": "img_base64",
         "name": "Base64&Img",
         "descr": "图片转Base64",
         "component": "ImgBase64Com"
     },
     {
-        "id": 25,
+        "id": 24,
         "type": "img_qrcode",
         "name": "QR Code",
         "descr": "二维码生成",

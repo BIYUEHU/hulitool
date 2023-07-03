@@ -22,7 +22,7 @@
 
         <!-- 左边栏 -->
         <div class="mdui-drawer mdui-shadow-6" id="main-drawer">
-            <div class="mdui-list" mdui-collapse="{accordion: true}" v-for="item in NavData" :key="(item as any)">
+            <div class="mdui-list" mdui-collapse="{accordion: true}" v-for="item in NavData" :key="(item as navType).name">
                 <router-link v-if="item.path" :to="item.path" class="mdui-list-item mdui-ripple">
                     <i class="mdui-list-item-icon mdui-icon material-icons" :class="item.color">
                         <i v-if="item.icon.length < 20" style="font-style:normal">{{ item.icon }}</i>
@@ -41,16 +41,20 @@
                         <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
                     </div>
                     <div class="mdui-collapse-item-body mdui-list">
-                        <router-link v-for="item2 in item.content" :key="(item2 as any)" :to="item2.path"
+                        <router-link v-for="item2 in item.content" :key="item2.name" :to="item2.path"
                             class="mdui-list-item mdui-ripple">
-                            <i v-if="(item2 as any).icon" class=" mdui-list-item-icon mdui-icon material-icons" :class="(item2 as any).color">
-                                <i v-if="(item2 as any).icon.length < 20" style="font-style:normal">{{
-                                    (item2 as any).icon }}</i>
-                                <span v-else v-html="(item2 as any).icon"></span>
+                            <i v-if="(item2 as navContentType).icon" class=" mdui-list-item-icon mdui-icon material-icons"
+                                :class="(item2 as navContentType).color">
+                                <i v-if="(item2 as navContentType).icon!.length < 20" style="font-style:normal">{{
+                                    (item2 as navContentType).icon }}</i>
+                                <span v-else v-html="(item2 as navContentType).icon"></span>
                             </i>
-                            <span v-if="(item2 as any).descr">
+                            <span v-show="false">{{ docTemp = <docType>DocData.find(
+                                dataDoc => `/doc/${dataDoc.type}` === item2.path
+                            ) }}</span>
+                            <span v-if="!docTemp.origin && docTemp && docTemp.descr">
                                 <div class="mdui-list-item-title">{{ item2.name }}</div>
-                                <div class="mdui-list-item-text">{{ (item2 as any).descr }}</div>
+                                <div class="mdui-list-item-text">{{ docTemp.descr }}</div>
                             </span>
                             <div v-else class="mdui-list-item-content">{{ item2.name }}</div>
                         </router-link>
@@ -63,7 +67,8 @@
 
 <script setup lang="ts">
 import NavData from '../json/NavData.json';
-    // import { getCurrentInstance } from 'vue';
-    // const { poxry } = getCurrentInstance() as unknown;
-    // poxry.$mdui
+import DocData from '../json/DocData.json';
+import { navType, navContentType, docType, obj } from '../function';
+import { reactive } from 'vue';
+let docTemp = reactive<obj>({});
 </script>

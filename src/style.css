@@ -1,3 +1,7 @@
+.child {
+    margin: 10px !important;
+}
+
 .bg {
     /* position: absolute; */
     width: 100%;
@@ -6,25 +10,18 @@
 
 .bg::before {
     content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;/* 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: fixed; */
-    background-color: #fff;
-    background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
     background-position: 100% 100%;
     background-repeat: no-repeat;
-    z-index: -10;
+    position: fixed;
+    right: 0;
+    bottom: 0;
     height: 100vh;
+    width: 30vw;
     opacity: .5;
+    z-index: -1;
 }
+
 
 .mdui-select-menu-item {
     height: 48px;

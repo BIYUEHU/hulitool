@@ -1,18 +1,22 @@
-import mdui from 'mdui';
+import mdui from 'mdui'
+import { obj } from './interface';
 
-export const test = () => {
-    console.log('test');
-};
+export const copyContent = (proxy: obj, content: string) => {
+    proxy.$copyText(content).then(
+        copyOnSuccess,
+        copyOnError
+    )
+}
 
-export const copyOnSuccess = () => {
+export const copyOnSuccess = (): void => {
     mdui.snackbar("复制成功");
 };
 
-export const copyOnError = () => {
+export const copyOnError = (): void => {
     mdui.snackbar("复制失败");
 };
 
-export const tips = (code: number | string, color?: string) => {
+export const tips = (code: number | string, color?: string): void => {
     let message: number | string = '';
     switch (code) {
         case 1:

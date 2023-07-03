@@ -25,7 +25,6 @@ export const useMainStore = defineStore('main', {
 
     actions: {
         setDefaultTheme() {
-            console.log('11');            
             this.settings = JSON.parse(JSON.stringify(settings));
         }
     }

@@ -33,28 +33,41 @@
             <input class="mdui-textfield-input" v-model="uid" maxlength="30" type="text" />
         </div>
         <div class="mdui-row-xs-1">
-        <div class="mdui-col">
-            <button @click="(uid && getData({ uid })) || lib.func.tips(1)"
-                class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">查成分</button>
-        </div>
-    </div>
-    <br>
-    <div v-if="dataRes" class="mdui-card mdui-hoverable">
-        <div class="mdui-card-header mdui-row">
-            <div class="mdui-card-header-title">
-                <h3>成分结果</h3>
+            <div class="mdui-col">
+                <button @click="(uid && getData({ uid })) || tips(1)"
+                    class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">查成分</button>
             </div>
         </div>
-        <div class="mdui-card-content">
-            <div v-html="dataRes"></div>
-        </div>
         <br>
-        <div class="mdui-card-header-subtitle"></div>
+        <div v-if="(<resType>dataRes).code">
+            <div v-if="(<resType>dataRes).code === 500" class="mdui-card mdui-hoverable">
+                <div class="mdui-card-header mdui-row">
+                    <div class="mdui-card-header-title">
+                        <h4>成分结果</h4>
+                    </div>
+                </div>
+                <div class="mdui-card-content" v-for="(item, index) in (<data>(<resType>dataRes).data).tag" :key="item">
+                    <span :style="{ color: (<data>(<resType>dataRes).data).color[index]}">{{ item }} </span>
+                </div>
+                <br>
+                <div class="mdui-card-header-subtitle"></div>
+            </div>
+            <div v-else>
+                {{ tips('解析失败', 'pink'), dataRes = {} }}
+            </div>
+        </div>
     </div>
-</div></template>
+</template>
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData')), lib: any = ref(inject('lib'));
+import { tips, resType } from '../../function';
+
+interface data {
+    tag: string[]
+    color: string[]
+}
+
+const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 const uid = ref('');
 </script>

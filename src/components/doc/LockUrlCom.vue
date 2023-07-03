@@ -5,9 +5,9 @@
             <textarea v-model="msg_before" rows="10" class="mdui-textfield-input"></textarea>
         </div>
 
-        <button @click="msg_after = LockUnicodeCom.encode(msg_before)"
+        <button @click="msg_after = LockUrlCom.encode(msg_before)"
             class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple">编码</button>
-        <button @click="msg_before = LockUnicodeCom.decode(msg_after)"
+        <button @click="msg_before = LockUrlCom.decode(msg_after)"
             class="child mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple">解码</button>
 
         <div class="mdui-textfield mdui-textfield-not-empty">
@@ -19,6 +19,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { LockUnicodeCom } from '../../function';
-const msg_before = ref('曾经沧海难为水，除却巫山不是云'), msg_after = ref('');
+import { LockUrlCom } from '../../function';
+const msg_before = ref('https://tool.imlolicon.tk/#/doc/lock_html?mdui-dialog'), msg_after = ref('');
 </script>

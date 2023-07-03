@@ -46,16 +46,15 @@
         <div class="mdui-divider"></div>
         <div class="mdui-dialog-actions">
             <button class="mdui-btn mdui-ripple mdui-float-left" @click="mainStore.setDefaultTheme()">恢复默认设置</button>
-            <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="" @click="proxy.$func.tips('保存成功')">确定</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="" @click="tips('保存成功')">确定</button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { inject, getCurrentInstance } from 'vue';
+import { inject } from 'vue';
 import ThemeData from '../json/ThemeData.json';
-
-const { proxy } = getCurrentInstance() as any;
+import { tips } from '../function';
 
 const settings = inject('settings') as any;
 const mainStore = inject('mainStore') as any;

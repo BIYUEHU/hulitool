@@ -16,31 +16,39 @@
         </div>
         <div class="mdui-row-xs-1">
             <div class="mdui-col">
-                <button @click="(name && getData({ name })) || lib.func.tips(1)"
+                <button @click="(name && getData({ name })) || tips(1)"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">点击解析</button>
             </div>
         </div>
         <br>
-        <div v-if="dataRes && dataRes.code === 500 && dataRes.data">
+        <div v-if="(<resType>dataRes).code && (<resType>dataRes).code === 500 && (<resType>dataRes).data">
+            {{ console.log(dataRes) }}
             <div class="mdui-card mdui-hoverable">
                 <div class="mdui-card-header mdui-row">
                     <div class="mdui-card-header-title">
-                        <h3>歌曲信息</h3>
+                        <h4>歌曲信息</h4>
                     </div>
                 </div>
                 <div class="mdui-card-content">
-                    <strong>歌名:</strong>{{ dataRes.data[init].title }}
-                    <strong>歌手:</strong>{{ dataRes.data[init].author }}<br>
-                    <strong>ID:</strong>{{ dataRes.data[init].songid }}
-                    <strong>链接:</strong><a :href="dataRes.data[init].link">{{ dataRes.data[init].link }}</a><br>
-                    <strong>封面:</strong><img style="width:90px" :src="dataRes.data[init].pic" /><br>
-                    <audio controls autoplay :src="dataRes.data[init].url"></audio>
-                    <a :href="dataRes.data[init].url">点击下载</a><br>
-                    <strong>歌词:</strong><span v-if="dataRes.data[init].lrc">
-                        {{ dataRes.data[init].lrc.split(0, 30) + '...' }}
-                        <a :href="'data:application/octet-stream;base64,' + encode(dataRes.data[init].lrc)" :download="dataRes.data[init].title + '.lrc'">点击下载</a><br>
+                    <span><strong>歌名:</strong>{{ (<neteaseData[]>(<resType>dataRes).data)[init].title }}</span>
+                    <span><strong>歌手:</strong>{{ (<neteaseData[]>(<resType>dataRes).data)[init].author }}<br></span>
+                    <span><strong>ID:</strong>{{ (<neteaseData[]>(<resType>dataRes).data)[init].songid }}</span>
+                    <span><strong>链接:</strong><a :href="(<neteaseData[]>(<resType>dataRes).data)[init].link">
+                            {{ (<neteaseData[]>(<resType>dataRes).data)[init].link }}
+                        </a><br></span>
+                    <span><strong>封面:</strong><img style="width:90px"
+                            :src="(<neteaseData[]>(<resType>dataRes).data)[init].pic" /><br></span>
+                    <span><audio controls autoplay :src="(<neteaseData[]>(<resType>dataRes).data)[init].url"></audio></span>
+                    <span><a target="_blank" :href="(<neteaseData[]>(<resType>dataRes).data)[init].url">点击下载</a><br></span>
+                    <span><strong>歌词:</strong>
+                        <span v-if="(<neteaseData[]>(<resType>dataRes).data)[init].lrc">
+                            {{ (<neteaseData[]>(<resType>dataRes).data)[init].lrc.substring(0, 90) + '...' }}
+                                    <a target="_blank"
+                                        :href="'data:application/octet-stream;base64,' + encode((<neteaseData[]>(<resType>dataRes).data)[init].lrc)"
+                                        :download="(<neteaseData[]>(<resType>dataRes).data)[init].title + '.lrc'">点击下载</a><br>
+                        </span>
+                        <span v-else>无</span>
                     </span>
-                    <span v-else>无</span>
                 </div>
                 <br>
                 <div class="mdui-card-header-subtitle"></div>
@@ -56,8 +64,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in dataRes.data" :key="item" @click="viewInfo(index)">
-                            <td>{{ index + 1 }}</td>
+                        <tr v-for="(item, index) in <neteaseData[]>(<resType>dataRes).data" :key="item.songid"
+                            @click="viewInfo(<number>index)">
+                            <td>{{ <number>index + 1 }}</td>
                             <td>{{ item.title }}</td>
                             <td>{{ item.author }}</td>
                         </tr>
@@ -65,17 +74,29 @@
                 </table>
             </div>
         </div>
-        <div v-else-if="dataRes">
-            {{ lib.func.tips('解析失败', 'darkblue'), dataRes = null }}
+        <div v-else-if="(<resType>dataRes).code">
+            {{ tips('解析失败', 'darkblue'), dataRes = {} }}
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
+import { tips, resType } from '../../function';
 import { encode } from 'js-base64';
 
-const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData')), lib: any = ref(inject('lib'));
+interface neteaseData {
+    type: 'netease',
+    title: string,
+    author: string,
+    songid: number,
+    link: string,
+    pic: string,
+    url: string,
+    lrc: string
+}
+
+const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 const name = ref<string>(''), init = ref<number>(0);
 const viewInfo = (index: number) => {
     init.value = index;

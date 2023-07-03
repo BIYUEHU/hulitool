@@ -13,23 +13,23 @@
         </div>
         <div class="mdui-row-xs-1">
             <div class="mdui-col-xs-1">
-                <button @click="(qq && getData({ qq })) || lib.func.tips(1)"
+                <button @click="(qq && getData({ qq })) || tips(1)"
                     class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">点击查询</button>
             </div>
         </div>
         <br>
-        <div v-if="dataRes" class="mdui-card mdui-hoverable">
+        <div v-if="(<resType>dataRes).code" class="mdui-card mdui-hoverable">
             <div class="mdui-card-header mdui-row">
                 <div class="mdui-card-header-title">
-                    <h3>查询结果</h3>
+                    <h4>查询结果</h4>
                 </div>
             </div>
             <div class="mdui-card-content">
-                <span v-if="dataRes.code === 500">
-                    <strong>昵称:{{ dataRes.data.name }}</strong><br>
-                    <strong>头像:</strong><img :src="dataRes.data.imgurl" />
+                <span v-if="(<resType>dataRes).code === 500">
+                    <strong>昵称:{{ (<obj>(<resType>dataRes)).data.name }}</strong><br>
+                    <strong>头像:</strong><img :src="(<obj>(<resType>dataRes)).data.imgurl" />
                 </span>
-                <span v-else>{{ lib.func.tips(2), dataRes = null }}</span>
+                <span v-else>{{ tips(2), dataRes = {} }}</span>
             </div>
             <br>
             <div class="mdui-card-header-subtitle"></div>
@@ -39,6 +39,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-const dataRes: any = ref(inject('dataRes')), getData: any = ref(inject('getData')), lib: any = ref(inject('lib'));
+import { tips, resType, obj } from '../../function';
+const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 const qq = ref('');
 </script>

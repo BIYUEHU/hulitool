@@ -16,35 +16,34 @@
             <option value="10">阿尔托莉雅</option>
             <option value="11">宫水三叶</option>
         </select><br>
-        <img :src="url + demoParam"
-            class="huli-image-normal">
+        <img :src="url + demoParam" class="huli-image-normal">
         <div class="mdui-textfield mdui-textfield-not-empty mdui-row">
             <label class="mdui-textfield-label">内嵌代码</label>
             <div class="mdui-col-xs-9">
-                <pre class="code-box code-palce-container" v-highlight>
-                    <code class="html">{{ `<img src="${url}${demoParam}" style="width:500px;max-width: 90%;" />` }}</code>
-                </pre>
+                <codemirror v-model="code" :style="{ height: '40px' }" :autofocus="false" aria-readonly="true"
+                    :extensions="extensions" />
             </div>
             <div class="mdui-col-xs-3">
-                <br><br>
                 <button @click="copy()" class="mdui-btn mdui-ripple">Copy</button>
             </div>
         </div>
+        <span v-show="false">{{ code = `<img src="${url}${demoParam}" style="width:500px;max-width: 90%;" />` }}</span>
     </div>
 </template>
 
 <script setup lang="ts">
 import mdui from 'mdui';
-import { ref, getCurrentInstance } from 'vue';
-const { proxy } = getCurrentInstance() as any;
-const demoParam = ref('0'), url = 'https://api.imlolicon.tk/api/ipcard?apikey=b699b2d60915d83f3723272855240c4c&img=';
-const copy = () => {
-    proxy.$copyText(`<img src="${url}${demoParam.value}" style="width:500px;max-width: 90%;" />`).then(
-        proxy.$func.copyOnSuccess,
-        proxy.$func.copyOnError
-    )
-}
+import { ref, getCurrentInstance, ComponentInternalInstance } from 'vue';
+import { copyContent } from '../../function';
+const { proxy } = <ComponentInternalInstance>getCurrentInstance();
+const demoParam = ref('0'), code = ref<string>(''), url = 'https://api.imlolicon.tk/api/ipcard?apikey=b699b2d60915d83f3723272855240c4c&img=';
+const copy = () => copyContent(<any>proxy, `<img src="${url}${demoParam.value}" style="width:500px;max-width: 90%;" />`);
 
-new proxy.$mdui.Select('#demo');
+import { Codemirror } from "vue-codemirror";
+import { html } from '@codemirror/lang-html';
+import { oneDark } from '@codemirror/theme-one-dark'
+const extensions = [html(), oneDark];
+
+new (<any>proxy).$mdui.Select('#demo');
 mdui.mutation();
 </script>

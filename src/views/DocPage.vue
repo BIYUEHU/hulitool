@@ -1,85 +1,87 @@
 <template>
     <!-- <div class="mdui-container-fluid"> -->
-    <div v-if="progress" class="mdui-progress mdui-toolbar">
-        <div class="mdui-progress-indeterminate"></div>
-    </div>
-    <div class="mdui-m-b-2 mdui-m-t-5 mdui-container" v-if="dataDoc">
-        <span class="mdui-typo">
-            <h3>{{ dataDoc.name }}<small v-if="dataDoc.descr"><br>{{ dataDoc.descr }}</small></h3>
-        </span>
-        <div v-if="dataDoc.origin">
-            <strong v-if="dataDoc.origin.from">来源:{{ dataDoc.origin.from }}<br></strong>
-            <strong v-if="dataDoc.origin.doc">文档:<a target="_blank" :href="dataDoc.origin.doc">{{
-                dataDoc.origin.doc
-            }}</a><br>
-            </strong>
-            <h4 v-if="dataDoc.origin.stat && dataStat">
-                <span class="mdui-text-color-green">总计调用次数:{{ dataStat.total }}</span>
-                <span class="mdui-text-color-brown"> 今日调用次数:{{ dataStat.day }}</span>
-            </h4>
+    <div>
+        <div v-if="progress" class="mdui-progress mdui-toolbar">
+            <div class="mdui-progress-indeterminate"></div>
         </div>
-        <component :is="Component" v-if="Component"></component>
-        <br>
+        <div class="mdui-m-b-2 mdui-m-t-5 mdui-container" v-if="dataDoc">
+            <span class="mdui-typo">
+            <h3>{{ (dataDoc as func.docType).name }}<small v-if="(dataDoc as func.docType).descr"><br>{{ (dataDoc as
+                func.docType).descr }}</small></h3>
+            </span>
+            <div v-if="(<func.docType>dataDoc).origin">
+                <strong v-if="(dataDoc as func.docType).origin!.from">来源:{{ (dataDoc as func.docType).origin!.from
+                }}<br></strong>
+                <strong v-if="(dataDoc as func.docType).origin!.doc">文档:<a target="_blank"
+                        :href="(dataDoc as func.docType).origin!.doc">{{
+                            (dataDoc as func.docType).origin!.doc
+                        }}</a><br>
+                </strong>
+                <h5 v-if="(dataDoc as func.docType).origin!.stat && dataStat">
+                    <span class="mdui-text-color-green">总计调用次数:{{ dataStat.total }}</span>
+                    <span class="mdui-text-color-brown"> 今日调用次数:{{ dataStat.day }}</span>
+                </h5>
+            </div>
+            <component :is="Component" v-if="Component"></component>
+            <br>
+        </div>
     </div>
-    <!-- </div> -->
 </template>
 
 <script setup lang="ts">
-import { ref, provide, defineAsyncComponent, watch, getCurrentInstance } from 'vue';
+import { ref, reactive, provide, defineAsyncComponent, watch, getCurrentInstance, ComponentInternalInstance, ComponentPublicInstance } from 'vue';
 import { useRoute } from 'vue-router';
 import * as http from '../http';
 import DocData from "../json/DocData.json";
+import * as func from '../function';
 
-const progress = ref(false), dataStat: any = ref({ total: 0, day: 0 }),
-    dataRes: any = ref(null), /* dataOther = ref(null), */
-    Component = ref(null), dataDoc: any = ref(null);
-
+const { proxy } = <ComponentInternalInstance>getCurrentInstance();
+const progress = ref<boolean>(false),
+    dataStat = reactive<func.statType>({ total: 0, day: 0 }),
+    Component = ref<func.obj>({}),
+    dataRes = ref<func.resType | func.resType[] | object | []>({});
+let dataDoc = reactive<func.docType | object>({});
 /* 根据路由获取对应的Doc数据 */
 const router = useRoute();
-const getDoc = () => {
+const getDoc = (): func.docType | undefined => {
     return DocData.find(
         dataDoc => dataDoc.type === router.params.docType
     )
 };
 
 /* 根据Doc数据动态导入对应的Doc组件 */
-const loadCom = () => {
-    return import(`../components/doc/${dataDoc.value.component}.vue`);
+const loadCom = (): Promise<any> => {
+    return import(`../components/doc/${(<func.docType>dataDoc).component}.vue`);
 };
 
 /* 加载条 */
-const progressView = () => progress.value = !progress.value;
-
-/* 提示消息 */
-const { proxy } = getCurrentInstance() as any;
-
-
+const progressView = (): boolean => progress.value = !progress.value;
 
 /* 根据文档数据设置对应的Stat */
-const getStat = () => {
-    http.getStat(dataDoc.value.origin.stat).then((res) => {
-        dataStat.value.total = res.data.data;
+const getStat = (): void => {
+    http.getStat((<func.docType>dataDoc).origin!.stat).then((res) => {
+        dataStat.total = res.data.data;
     });
-    http.getStat(dataDoc.value.origin.stat, 1).then((res) => {
-        dataStat.value.day = res.data.data;
+    http.getStat((<func.docType>dataDoc).origin!.stat, 1).then((res) => {
+        dataStat.day = res.data.data;
     });
 }
 
 /* 请求具体的API获取数据 */
-const getData = (dataReq?: any, auto: Boolean = true) => {
-    if (!((http as any)[dataDoc.value.http]) || !auto) return false;
+const getData = (dataReq?: func.obj | null, auto: Boolean = true): boolean => {
+    if (!(<func.docType>dataDoc).http || !((<func.obj>http)[((<func.docType>dataDoc).http!)]) || !auto) return false;
 
     progressView();
-    const Promise = (http as any)[dataDoc.value.http](dataReq);
-
-    interface obj {
-        data: any
+    interface res2 {
+        data: func.resType
     }
+
+    const Promise = (<func.obj>http)[(<func.docType>dataDoc).http!](dataReq);
     /* 判断是多个请求还是单个 */
     if (Array.isArray(Promise)) {
-        const Res: any[] = [];
+        const Res: func.resType[] = [];
         for (let init = 0; init < Promise.length; init++) {
-            Promise[init].then((res: obj) => {
+            Promise[init].then((res: res2) => {
                 Res[init] = res.data;
                 if (init === Promise.length - 1) {
                     dataRes.value = Res;
@@ -88,38 +90,40 @@ const getData = (dataReq?: any, auto: Boolean = true) => {
             });
         }
     } else {
-        Promise.then((res: obj) => {
+        Promise.then((res: res2) => {
             dataRes.value = res.data;
             progressView();
         })
     };
     getStat();
+
     return true;
 };
 
 
-const main = () => {
-    dataRes.value = Component.value = dataDoc.value = null;
+const main = (): void => {
+    dataRes.value = Component.value = dataDoc = {};
 
     /* 向子组件传值 */
     provide('dataRes', dataRes);
     provide('getData', getData);
-    provide('lib', { mdui: proxy.$mdui, func: proxy.$func });
+    // provide('lib', { mdui: (<func.obj>proxy).$mdui, func: (<func.obj>proxy).$func });
 
-    dataDoc.value = getDoc();
-
-    if (!dataDoc.value) {
-        proxy.$router.push('/404')
+    let doc = getDoc();
+    if (!doc) {
+        (<ComponentPublicInstance>proxy).$router.push('/404')
         return;
     }
+    dataDoc = doc;
+
     loadCom().then(() => {
         Component.value = defineAsyncComponent(() => loadCom());
     }).catch((err) => {
-        console.log(`${dataDoc.value.component} 组件不存在!!!`, err)
+        console.log(`${(<func.docType>dataDoc).component} 组件不存在!!!`, err)
     });
 
-    dataDoc.value.origin && getStat();
-    getData(null, !!dataDoc.value.auto);
+    (<func.docType>dataDoc).origin && getStat();
+    getData(null, !!(<func.docType>dataDoc).auto);
 }
 
 /* 第一次载入 */

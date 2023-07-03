@@ -82,19 +82,23 @@
         "content": [
             {
                 "path": "/doc/code_html",
-                "name": "HTML&XML"
+                "name": "HTML",
+                "descr": "格式化 / 压缩"
             },
             {
                 "path": "/doc/code_css",
-                "name": "CSS"
+                "name": "CSS",
+                "descr": "格式化 / 压缩"
             },
             {
                 "path": "/doc/code_js",
-                "name": "JS"
+                "name": "JS",
+                "descr": "格式化 / 压缩 / 混淆"
             },
             {
                 "path": "/doc/code_json",
-                "name": "JSON"
+                "name": "JSON",
+                "descr": "检验 / 格式化 / 压缩 / 编码"
             }
         ]
     },
@@ -105,31 +109,33 @@
         "content": [
             {
                 "path": "/doc/lock_unicode",
-                "name": "Unicode"
+                "name": "Unicode",
+                "descr": "HTML实体转换"
             },
             {
                 "path": "/doc/lock_base64",
-                "name": "Base64"
-            },
-            {
-                "path": "/doc/lock_html",
-                "name": "HTML实体"
+                "name": "Base64",
+                "descr": "Base64()"
             },
             {
                 "path": "/doc/lock_url",
-                "name": "URL"
+                "name": "URL",
+                "descr": "地址链接转义"
             },
             {
                 "path": "/doc/lock_text",
-                "name": "文本转义"
+                "name": "文本转义",
+                "descr": "经典的反斜杠"
             },
             {
                 "path": "/doc/lock_hash",
-                "name": "哈希"
+                "name": "哈希",
+                "descr": "MD5"
             },
             {
                 "path": "/doc/lock_lock",
-                "name": "加密"
+                "name": "加密",
+                "descr": ""
             }
         ]
     },
@@ -140,15 +146,18 @@
         "content": [
             {
                 "path": "/doc/img_png2ico",
-                "name": "ICO"
+                "name": "ICO",
+                "descr": "PNG转ICO"
             },
             {
                 "path": "/doc/img_base64",
-                "name": "Base64&Img"
+                "name": "Base64&Img",
+                "descr": "图片转Base64"
             },
             {
-                "path": "/doc/img_qrcode",
-                "name": "QR Code"
+                "path": "/doc/lock_qrcode",
+                "name": "QR Code",
+                "descr": "二维码生成"
             }
         ]
     }
