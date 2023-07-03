@@ -1,5 +1,5 @@
 // import htmlminifier from 'html-minifier';
-import CleanCSS from "clean-css";
+// import CleanCSS from "clean-css";
 import BeautifyJs from "js-beautify";
 import { tips } from "./method";
 // import * as terser from 'terser'
@@ -17,7 +17,7 @@ export class CodeCssCom {
         indent_size: tabSize
     })
 
-    public static zip = (code: string) => new CleanCSS().minify(code);
+    public static zip = (code: string) => code;
 
 }
 
