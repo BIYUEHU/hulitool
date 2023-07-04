@@ -27,7 +27,6 @@ const extensions: any[] = [];
 for (const path in modules) {
     modules[path]().then((mod: unknown) => {
         if (path.match(`/@codemirror/lang-${options.lang}/dist/index.js`)) {
-            console.log((<obj>mod)[options.lang]());
             extensions[0] = [(<obj>mod)[options.lang]()]
         }
     })

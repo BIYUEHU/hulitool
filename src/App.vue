@@ -26,42 +26,17 @@ import HeaderCom from './components/HeaderCom.vue';
 import SettingsCom from './components/SettingsCom.vue';
 import { storeToRefs } from 'pinia';
 import { useMainStore } from './store';
+import { App } from './function';
 
 const { proxy } = <ComponentInternalInstance>getCurrentInstance();
 
 /* 加载用户设置 */
 const mainStore = useMainStore();
 const { settings } = storeToRefs(mainStore);
-
-const setThemeLayout = (): void => {
-    const bodyClass: DOMTokenList = (<ComponentPublicInstance>proxy).$el.offsetParent.classList;
-    bodyClass.remove('mdui-theme-layout-auto');
-    bodyClass.remove('mdui-theme-layout-light');
-    bodyClass.remove('mdui-theme-layout-dark');
-    switch (settings.value.theme.layout) {
-        case 'light':
-            break;
-        case 'dark':
-            bodyClass.add('mdui-theme-layout-dark')
-            break;
-        case 'time':
-            const hours: number = new Date().getHours();
-            if (hours >= 7 && hours <= 19) {
-                bodyClass.add('mdui-theme-layout-light');
-            } else {
-                bodyClass.add('mdui-theme-layout-dark');
-            }
-            break;
-        default:
-            bodyClass.add('mdui-theme-layout-auto');
-            break;
-    }
-}
-
-onMounted(() => setThemeLayout());
+onMounted(() => App.setThemeLayout((<ComponentPublicInstance>proxy).$el.offsetParent.classList, settings.value.theme.layout));
 provide('settings', settings);
 provide('mainStore', mainStore);
 provide('settingsMethod', {
-    setThemeLayout
+    setThemeLayout: () => App.setThemeLayout((<ComponentPublicInstance>proxy).$el.offsetParent.classList, settings.value.theme.layout)
 });
 </script>

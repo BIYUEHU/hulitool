@@ -71,7 +71,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-import { resType, tips } from '../../function';
+import { resType, tips, ChatCom } from '../../function';
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 
 const messageList = ref([]), msg = ref(''), messageAfter: any = ref({});
@@ -93,17 +93,11 @@ const update = ref((data: obj) => {
 })
 
 
-function* handler(string: string) {
-    const array = string.split('');
-    for (let element of array) {
-        yield element;
-    }
-}
 const timer = (iterator: string | Generator, key?: string) => {
     if (typeof iterator === 'string') {
         update.value({ msg: iterator });
         key = iterator;
-        iterator = handler(iterator)
+        iterator = ChatCom.handler(iterator)
     };
     const element = iterator.next();
     if (element.done === false) {

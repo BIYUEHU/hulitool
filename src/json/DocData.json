@@ -105,13 +105,7 @@
         "id": 9,
         "type": "qqget",
         "name": "QQ昵称图片获取",
-        "component": "QqgetCom",
-        "http": "getQq",
-        "origin": {
-            "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/qqget",
-            "stat": "qqget_inside"
-        }
+        "component": "QqgetCom"
     },
     {
         "id": 10,

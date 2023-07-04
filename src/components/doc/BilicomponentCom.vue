@@ -46,8 +46,8 @@
                         <h4>成分结果</h4>
                     </div>
                 </div>
-                <div class="mdui-card-content" v-for="(item, index) in (<data>(<resType>dataRes).data).tag" :key="item">
-                    <span :style="{ color: (<data>(<resType>dataRes).data).color[index]}">{{ item }} </span>
+                <div class="mdui-card-content" v-for="(item, index) in (<biliComponentData>(<resType>dataRes).data).tag" :key="item">
+                    <span :style="{ color: (<biliComponentData>(<resType>dataRes).data).color[index]}">{{ item }} </span>
                 </div>
                 <br>
                 <div class="mdui-card-header-subtitle"></div>
@@ -61,12 +61,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-import { tips, resType } from '../../function';
-
-interface data {
-    tag: string[]
-    color: string[]
-}
+import { tips, resType, biliComponentData } from '../../function';
 
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 const uid = ref('');

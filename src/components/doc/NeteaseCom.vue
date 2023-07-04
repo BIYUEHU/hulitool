@@ -22,7 +22,6 @@
         </div>
         <br>
         <div v-if="(<resType>dataRes).code && (<resType>dataRes).code === 500 && (<resType>dataRes).data">
-            {{ console.log(dataRes) }}
             <div class="mdui-card mdui-hoverable">
                 <div class="mdui-card-header mdui-row">
                     <div class="mdui-card-header-title">
@@ -38,17 +37,26 @@
                         </a><br></span>
                     <span><strong>封面:</strong><img style="width:90px"
                             :src="(<neteaseData[]>(<resType>dataRes).data)[init].pic" /><br></span>
-                    <span><audio controls autoplay :src="(<neteaseData[]>(<resType>dataRes).data)[init].url"></audio></span>
+                    <span><audio controls autoplay :events="audioEvents"
+                            :src="(<neteaseData[]>(<resType>dataRes).data)[init].url"></audio></span>
                     <span><a target="_blank" :href="(<neteaseData[]>(<resType>dataRes).data)[init].url">点击下载</a><br></span>
                     <span><strong>歌词:</strong>
+                        {{ lyrics }}
                         <span v-if="(<neteaseData[]>(<resType>dataRes).data)[init].lrc">
                             {{ (<neteaseData[]>(<resType>dataRes).data)[init].lrc.substring(0, 90) + '...' }}
                                     <a target="_blank"
                                         :href="'data:application/octet-stream;base64,' + encode((<neteaseData[]>(<resType>dataRes).data)[init].lrc)"
                                         :download="(<neteaseData[]>(<resType>dataRes).data)[init].title + '.lrc'">点击下载</a><br>
                         </span>
+                        <!-- <span v-show="false">{{ lrcContent = (<neteaseData[]>(<resType>dataRes).data)[init].lrc }}</span>
+                        <p v-for="lyric in lyrics" :key="lyric.time" v-if="lyric.time >= currentTime">
+                            {{ lyric.text }}
+                        </p> -->
                         <span v-else>无</span>
                     </span>
+                    <!-- <span v-show="false">
+                        {{ console.log((<neteaseData[]>(<resType>dataRes).data)[init].lrc.split('\n')) }}
+                    </span> -->
                 </div>
                 <br>
                 <div class="mdui-card-header-subtitle"></div>
@@ -81,24 +89,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from 'vue';
-import { tips, resType } from '../../function';
+import { ref, inject, onMounted } from 'vue';
+import { tips, resType, NeteaseCom, neteaseData, lrcType } from '../../function';
 import { encode } from 'js-base64';
 
-interface neteaseData {
-    type: 'netease',
-    title: string,
-    author: string,
-    songid: number,
-    link: string,
-    pic: string,
-    url: string,
-    lrc: string
-}
-
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
-const name = ref<string>(''), init = ref<number>(0);
+const name = ref<string>(''), init = ref<number>(0), lrcContent = ref<string>(''), lyrics = ref<lrcType[]>([]);
 const viewInfo = (index: number) => {
     init.value = index;
 }
+
+const audioEvents = {
+    timeupdate: (audio: any) => {
+        // console.log(audio);
+        audio;
+    }
+};
+
+onMounted(async () => {
+    lyrics.value = NeteaseCom.parseLrc(lrcContent.value)
+})
 </script>

@@ -1,3 +1,19 @@
+export type CodeHandleVoidFunc = (code: string) => void;
+export type CodeHandleFunc = (code: string) => string;
+export type CodeFormatFunc = (code: string, tabSize?: number) => string;
+
+export declare interface CodeClass {
+    format: CodeFormatFunc,
+    zip: CodeHandleFunc,
+    run?: CodeHandleFunc,
+    check?: CodeHandleVoidFunc
+}
+
+export declare interface LockClass {
+    encode: CodeHandleFunc,
+    decode: CodeHandleFunc
+}
+
 export interface obj {
     [keyname: string]: any
 }
@@ -38,4 +54,25 @@ export interface navContentType {
     icon?: string,
     name: string,
     color?: string
+}
+
+export interface biliComponentData {
+    tag: string[]
+    color: string[]
+}
+
+export interface neteaseData {
+    type: 'netease',
+    title: string,
+    author: string,
+    songid: number,
+    link: string,
+    pic: string,
+    url: string,
+    lrc: string
+}
+
+export interface lrcType {
+    time: string,
+    lyric: string
 }

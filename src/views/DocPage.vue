@@ -49,11 +49,6 @@ const getDoc = (): func.docType | undefined => {
     )
 };
 
-/* 根据Doc数据动态导入对应的Doc组件 */
-const loadCom = (): Promise<any> => {
-    return import(`../components/doc/${(<func.docType>dataDoc).component}.vue`);
-};
-
 /* 加载条 */
 const progressView = (): boolean => progress.value = !progress.value;
 
@@ -107,7 +102,6 @@ const main = (): void => {
     /* 向子组件传值 */
     provide('dataRes', dataRes);
     provide('getData', getData);
-    // provide('lib', { mdui: (<func.obj>proxy).$mdui, func: (<func.obj>proxy).$func });
 
     let doc = getDoc();
     if (!doc) {
@@ -116,8 +110,8 @@ const main = (): void => {
     }
     dataDoc = doc;
 
-    loadCom().then(() => {
-        Component.value = defineAsyncComponent(() => loadCom());
+    func.DocPage.loadCom((<func.docType>dataDoc).component).then(() => {
+        Component.value = defineAsyncComponent(() => func.DocPage.loadCom((<func.docType>dataDoc).component));
     }).catch((err) => {
         console.log(`${(<func.docType>dataDoc).component} 组件不存在!!!`, err)
     });
