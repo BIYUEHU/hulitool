@@ -199,14 +199,14 @@
         "id": 21,
         "type": "lock_hash",
         "name": "哈希",
-        "descr": "MD5",
+        "descr": "MD5 / SHA256...",
         "component": "LockHashCom"
     },
     {
         "id": 22,
         "type": "lock_lock",
         "name": "加密",
-        "descr": "",
+        "descr": "AES / DES...",
         "component": "LockLockCom"
     },
     {

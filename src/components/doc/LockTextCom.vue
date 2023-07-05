@@ -20,5 +20,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { LockTextCom } from '../../function';
-const msg_before = ref('曾经沧海难为水，除却巫山不是云'), msg_after = ref('');
+const msg_before = ref(`[
+    {
+        "path": "/doc/bilicomponent",
+        "icon": "<svg class=\"icon\" style=\"width: 1em;\" fill=\"#EB5480\" p-id=\"1511\"></svg>",
+        "name": "B站查成分"
+    }
+]`), msg_after = ref('');
 </script>

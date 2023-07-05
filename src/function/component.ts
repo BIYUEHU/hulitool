@@ -1,10 +1,11 @@
 // import htmlminifier from 'html-minifier';
 // import CleanCSS from "clean-css";
 import BeautifyJs from "js-beautify";
-import { tips } from "./method";
 // import * as terser from 'terser'
 import * as Base64 from 'js-base64';
-import { lrcType, CodeHandleFunc, CodeHandleVoidFunc, CodeFormatFunc } from './interface';
+import CryptoJS from 'crypto-js';
+import { tips } from "./method";
+import { obj, lrcType, CodeHandleFunc, CodeHandleVoidFunc, CodeFormatFunc, CodeHandleTypeFunc, LockHashType, LockLockType } from './interface';
 
 export class App {
     public static setThemeLayout = (bodyClass: DOMTokenList, themeLayout: 'light' | 'dark' | 'time' | 'auto'): void => {
@@ -39,7 +40,7 @@ export class DocPage {
 }
 
 export class ChatCom {
-    public static handler = function *(string: string): Generator {
+    public static handler = function* (string: string): Generator {
         const array = string.split('');
         for (let element of array) {
             yield element;
@@ -68,9 +69,9 @@ export class CodeHtmlCom {
     public static zip: CodeHandleFunc = code => {
         code = code.replace(/<!--([\s\S]*?)-->|<!--/g, '');
         // code = code.replace(/<(!)?[^>]*>/g, '');
-/*         code = code.replace(/<([a-z][a-z0-9]*)\s*.*?\/>/gi, (...args) => {
-            return `<${args[1]}/>`;    
-        }); */
+        /*         code = code.replace(/<([a-z][a-z0-9]*)\s*.*?\/>/gi, (...args) => {
+                    return `<${args[1]}/>`;    
+                }); */
         code = CodeJsCom.zip(code);
         code = code.replace(', ', ',');
         code = code.replace('> <', '><');
@@ -140,11 +141,41 @@ export class CodeJsonCom {
 }
 
 export class LockUnicodeCom {
-    public static encode: CodeHandleFunc = code => {
-        return code;
+    private static handlerKey = (key: string): string => {
+        key = key.charCodeAt(0).toString(16);
+        switch (key.length) {
+            case 1:
+                key = '000' + key
+                break;
+            case 2:
+                key = '00' + key;
+                break;
+            case 3:
+                key = '0' + key;
+                break;
+        }
+        return key;
     }
 
-    public static decode: CodeHandleFunc = code => {
+    public static encode = (code: string, type: 0 | 1 = 0, decimal: boolean = false, all: boolean = false,): string => {
+        /* ASCLL字符 */
+        const ASCLL = ` !"#&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^—·abcdefghijklmnopqrstuvwxyz{|}~\n`;
+        const codeArr: string[] = code.split('');
+        let result = '';
+        codeArr.forEach((key: string) => {
+            if (type == 1) {
+                result += (ASCLL.includes(key) && !all) ? key : ('&#' + key.charCodeAt(0).toString(decimal ? 10 : 16)).toUpperCase();
+            } else {
+                result += (ASCLL.includes(key) && !all) ? key : '\\u' + this.handlerKey(key);
+            }
+        });
+        return result;
+    }
+
+    public static decode = (code: string/* , type: 0 | 1 = 0, decimal: boolean = false */): string => {
+        code = LockTextCom.encode(code);
+        code = code.replace(/\\\\u/g, '\\u');
+        code = JSON.parse(`{"text": "${code}"}`).text;
         return code;
     }
 }
@@ -186,20 +217,48 @@ export class LockUrlCom {
 export class LockTextCom {
     public static encode: CodeHandleFunc = code => {
         if (code.length === 0) return '';
-        code = JSON.stringify(code);        
-        return code.substring(1, code.length - 2);
+        // code = JSON.stringify(code);
+        // return code.substring(1, code.length - 2);
+        code = code.replace(/\\/g, `\\\\`);
+        code = code.replace(/\r/g, `\\r`);
+        code = code.replace(/\n/g, `\\n`);
+        code = code.replace(/\t/g, `\\t`);
+        // code = code.replace(/\b/g, `\\b`);
+        code = code.replace(/"/g, `\\"`);
+        code = code.replace(/'/g, `\\'`);
+        return code;
     }
 
     public static decode: CodeHandleFunc = code => {
         console.log(code)
         if (code.length === 0) return '';
         code = code.replace(/\\r/g, `\r`);
-        code = code.replace(/\\n/g, `sb`);
-        code = code.replace(/\t/g, `\t`);
-        code = code.replace(`\\b`, `\b`);
-        code = code.replace(`\\'`, `\'`);
-        code = code.replace(`\\"`, `\"`);
-        code = code.replace(`\\\\`, `\\`);
+        code = code.replace(/\\n/g, `\n`);
+        code = code.replace(/\\t/g, `\t`);
+        code = code.replace(/\\b/g, `\b`);
+        code = code.replace(/\\\\/g, `\\`);
+        code = code.replace(/\\"/g, `"`);
+        code = code.replace(/\\'/g, `'`);
+        return code;
+    }
+}
+
+export class LockHashCom {
+    public static handle: CodeHandleTypeFunc<LockHashType> = (code, type, key = '') => {
+        code = key.length > 0 ? (<obj>CryptoJS)['Hmac' + type](code, key).toString() : CryptoJS[type](code).toString();
+        return code;
+    }
+}
+
+export class LockLockCom {
+    public static encode: CodeHandleTypeFunc<LockLockType> = (code, type, key = '') => {
+        code = CryptoJS[type].encrypt(code, key).toString();
+        return code;
+    }
+
+    public static decode: CodeHandleTypeFunc<LockLockType> = (code, type, key = '') => {
+        code = CryptoJS[type].decrypt(code, key).toString(CryptoJS.enc.Utf8);
+        if (code.length < 1) tips('解密失败:密钥错误!')
         return code;
     }
 }

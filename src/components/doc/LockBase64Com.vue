@@ -20,5 +20,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { LockBase64Com } from '../../function';
-const msg_before = ref('曾经沧海难为水，除却巫山不是云'), msg_after = ref('');
+const msg_before = ref(`"Going to march! To Tiananmen Square!"\n"WHY?"\n"Why? It's my duty!"`), msg_after = ref('');
 </script>

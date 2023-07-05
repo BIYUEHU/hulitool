@@ -1,6 +1,9 @@
-export type CodeHandleVoidFunc = (code: string) => void;
 export type CodeHandleFunc = (code: string) => string;
+export type CodeHandleVoidFunc = (code: string) => void;
+export type CodeHandleTypeFunc<T> = (code: string, type: T, key: string) => string;
 export type CodeFormatFunc = (code: string, tabSize?: number) => string;
+export type LockHashType = 'MD5' | 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512' | 'SHA3' | 'RIPEMD160';
+export type LockLockType = 'AES' | 'DES' | 'Rabbit' | 'RC4' | 'RC4Drop' | 'TripleDES';
 
 export declare interface CodeClass {
     format: CodeFormatFunc,
