@@ -229,5 +229,65 @@
         "name": "QR Code",
         "descr": "二维码生成",
         "component": "ImgQrcodeCom"
+    },
+    {
+        "id": 26,
+        "type": "tool_lifecount",
+        "name": "人生小格",
+        "component": "ToolLifecountCom"
+    },
+    {
+        "id": 27,
+        "type": "tool_emuyu",
+        "name": "电子木鱼",
+        "component": "ToolEmuyuCom"
+    },
+    {
+        "id": 28,
+        "type": "tool_tomoto",
+        "name": "番茄时钟",
+        "component": "ToolTomotoCom"
+    },
+    {
+        "id": 28,
+        "type": "tool_tomoto",
+        "name": "番茄时钟",
+        "component": "ToolTomotoCom"
+    },
+    {
+        "id": 29,
+        "type": "tool_webpage",
+        "name": "网页制作器",
+        "component": "ToolWebpageCom"
+    },
+    {
+        "id": 30,
+        "type": "tool_pixiv",
+        "name": "Pixiv搜图",
+        "component": "ToolPixivCom"
+    },
+    {
+        "id": 31,
+        "type": "tool_ua",
+        "name": "UA标识解析",
+        "component": "ToolUaCom"
+    },
+    {
+        "id": 32,
+        "type": "tool_color",
+        "name": "随机颜色",
+        "component": "ToolColorCom"
+    },
+    {
+        "id": 33,
+        "type": "tool_time",
+        "name": "时间转换",
+        "component": "ToolTimeCom"
+    },
+    {
+        "id": 34,
+        "type": "tool_random",
+        "name": "随机数生成",
+        "component": "ToolRandomCom"
     }
 ]

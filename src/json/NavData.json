@@ -146,5 +146,48 @@
                 "name": "QR Code"
             }
         ]
+    },
+    {
+        "icon": "extension",
+        "name": "日常工具",
+        "color": "mdui-text-color-green-accent",
+        "content": [
+            {
+                "path": "/doc/tool_lifecount",
+                "name": "人生小格"
+            },
+            {
+                "path": "/doc/tool_emuyu",
+                "name": "电子木鱼"
+            },
+            {
+                "path": "/doc/tool_tomoto",
+                "name": "番茄时钟"
+            },
+            {
+                "path": "/doc/tool_webpage",
+                "name": "网页制作器"
+            },
+            {
+                "path": "/doc/tool_pixiv",
+                "name": "Pixiv搜图"
+            },
+            {
+                "path": "/doc/tool_ua",
+                "name": "UA标识解析"
+            },
+            {
+                "path": "/doc/tool_color",
+                "name": "随机颜色"
+            },
+            {
+                "path": "/doc/tool_time",
+                "name": "时间转换"
+            },
+            {
+                "path": "/doc/tool_random",
+                "name": "随机数生成"
+            }
+        ]
     }
 ]

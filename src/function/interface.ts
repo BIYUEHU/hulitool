@@ -79,3 +79,20 @@ export interface lrcType {
     time: string,
     lyric: string
 }
+
+export interface toolUaType {
+    ua: string,
+    browser: {
+        name: string,
+        version: string,
+        major: string
+    },
+    engine: {
+        name: string,
+        version: string
+    },
+    os: {
+        name: string,
+        version: string
+    }
+}

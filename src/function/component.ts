@@ -6,6 +6,7 @@ import * as Base64 from 'js-base64';
 import CryptoJS from 'crypto-js';
 import { tips } from "./method";
 import { obj, lrcType, CodeHandleFunc, CodeHandleVoidFunc, CodeFormatFunc, CodeHandleTypeFunc, LockHashType, LockLockType } from './interface';
+import UAParser from "ua-parser-js";
 
 export class App {
     public static setThemeLayout = (bodyClass: DOMTokenList, themeLayout: 'light' | 'dark' | 'time' | 'auto'): void => {
@@ -263,3 +264,4 @@ export class LockLockCom {
     }
 }
 
+export const ToolUaCom = (userAgentStr: string = navigator.userAgent) => UAParser(userAgentStr);
