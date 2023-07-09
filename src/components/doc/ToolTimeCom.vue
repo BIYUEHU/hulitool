@@ -1,26 +1,24 @@
 <template>
     <div>
         <div class="mdui-textfield mdui-textfield-not-empty">
-            <label class="mdui-textfield-label">编码前</label>
-            <textarea v-model="msg_before" rows="10" class="mdui-textfield-input"></textarea>
+            <label class="mdui-textfield-label">时间戳</label>
+            <textarea v-model="msg_before" rows="5" class="mdui-textfield-input"></textarea>
         </div>
 
-        <button @click="msg_after = LockBase64Com.encode(msg_before)"
-            class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple">编码</button>
-        <button @click="msg_before = LockBase64Com.decode(msg_after)"
-            class="child mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple">解码</button>
+        <button @click="msg_after = ToolTimeCom.encode(msg_before)"
+            class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple">转时间</button>
+        <button @click="msg_before = ToolTimeCom.decode(msg_after)"
+            class="child mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple">转时间戳</button>
 
         <div class="mdui-textfield mdui-textfield-not-empty">
-            <label class="mdui-textfield-label">编码后</label>
-            <textarea v-model="msg_after" rows="10" class="mdui-textfield-input"></textarea>
+            <label class="mdui-textfield-label">时间</label>
+            <textarea v-model="msg_after" rows="5" class="mdui-textfield-input"></textarea>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { LockBase64Com } from '../../function';
-const msg_before = ref(`"Going to march! To Tiananmen Square!"\n"WHY?"\n"Why? It's my duty!"`), msg_after = ref('');
-
-
+import { ToolTimeCom } from '../../function';
+const msg_before = ref(Math.round(new Date() as unknown as number / 1000)), msg_after = ref('');
 </script>

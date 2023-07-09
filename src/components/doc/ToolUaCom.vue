@@ -30,6 +30,4 @@
 import { ref } from 'vue';
 import { ToolUaCom } from '../../function';
 const uastr = ref<string>(navigator.userAgent), uaData = ref(ToolUaCom(uastr.value));
-console.log(uaData.value);
-
 </script>

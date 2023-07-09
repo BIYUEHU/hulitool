@@ -39,6 +39,19 @@
     },
     {
         "id": 4,
+        "type": "tieba",
+        "name": "查看贴吧动态",
+        "descr": "查看贴吧用户的回复内容与发帖内容",
+        "component": "TiebaCom",
+        "http": "getTieba",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/tieba",
+            "stat": "tieba_inside"
+        }
+    },
+    {
+        "id": 4,
         "type": "mcmotd",
         "name": "MCMOTD",
         "descr": "MCBE&JE服务器状态查询",
@@ -48,6 +61,19 @@
             "from": "HULIAPI",
             "doc": "https://api.imlolicon.tk/iluh/motdpe",
             "stat": "motdpe_inside"
+        }
+    },
+    {
+        "id": 4,
+        "type": "mcskin",
+        "name": "MC皮肤查询",
+        "descr": "获取MinecraftJava正版用户的皮肤与披风",
+        "component": "McskinCom",
+        "http": "getMcskin",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/mcskin",
+            "stat": "mcskin_inside"
         }
     },
     {
@@ -105,7 +131,13 @@
         "id": 9,
         "type": "qqget",
         "name": "QQ昵称图片获取",
-        "component": "QqgetCom"
+        "component": "QqgetCom",
+        "http": "getQq",
+        "origin": {
+            "from": "HULIAPI",
+            "doc": "https://api.imlolicon.tk/iluh/qqget",
+            "stat": "qqget_inside"
+        }
     },
     {
         "id": 10,
@@ -122,8 +154,8 @@
     {
         "id": 11,
         "type": "chat",
-        "name": "聊天AI",
-        "descr": "这个是ISLA酱~(不是GPT)",
+        "name": "ChatGPT",
+        "descr": "请先在右上角的设置里填写你的key",
         "component": "ChatCom",
         "http": "getChat",
         "origin": {
@@ -249,12 +281,6 @@
         "component": "ToolTomotoCom"
     },
     {
-        "id": 28,
-        "type": "tool_tomoto",
-        "name": "番茄时钟",
-        "component": "ToolTomotoCom"
-    },
-    {
         "id": 29,
         "type": "tool_webpage",
         "name": "网页制作器",
@@ -264,7 +290,8 @@
         "id": 30,
         "type": "tool_pixiv",
         "name": "Pixiv搜图",
-        "component": "ToolPixivCom"
+        "component": "ToolPixivPage",
+        "page": true
     },
     {
         "id": 31,

@@ -1,18 +1,15 @@
-# Vue 3 + TypeScript + Vite
+![version](https://img.shields.io/github/package-json/v/biyuehu/hulitool)
+![license](https://camo.githubusercontent.com/8addc1e46efd92165de0d5fa6d5fd6a3817251a50a45544710ae4eaf486e3fe5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f626979756568752f6b6f746f72692d626f743f636f6c6f723d64656570677265656e)
+![stars](https://img.shields.io/github/stars/biyuehu/hulitool)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# HULITOOL
+- 该项目是本人的第一个**Vue+TypeScript+Vite+Pinia**项目实战，主要为了练习一下Vue框架开发
+- HULITOOL完全为纯前端项目无后端(但用到了不少[HOTARUAPI](https://api.imlolicon.tk)接口)，因此网站通过**GithubPages**服务运行
+- 目前仅有少部分功能仍未实现，稍后也会时不时添加新功能，具体查看[CHANGELOG](./CHANGELOG.md)
 
-## Recommended IDE Setup
+## 技术栈&依赖包
+****
+[vue](https://www.npmjs.com/package/vue) [vue-clipboard2](https://www.npmjs.com/package/vue-clipboard2) [vue-codemirror](https://www.npmjs.com/package/vue-codemirror) [vue-router](https://www.npmjs.com/package/vue-router) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/) [](https://www.npmjs.com/package/)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support For `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 关于
+****

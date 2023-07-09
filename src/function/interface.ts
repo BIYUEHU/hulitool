@@ -41,6 +41,7 @@ export interface docType {
     component: string,
     http?: string,
     auto?: boolean,
+    page?: boolean,
     origin?: {
         from: string,
         doc: string,
@@ -75,6 +76,20 @@ export interface neteaseData {
     lrc: string
 }
 
+export interface tiebaData {
+    title: string,
+    content: string,
+    group: string,
+    time: string,
+    url: string
+}
+
+export interface mcskinData {
+    skin: string,
+    cape: string | null,
+    avatar: string | null
+}
+
 export interface lrcType {
     time: string,
     lyric: string
@@ -95,4 +110,23 @@ export interface toolUaType {
         name: string,
         version: string
     }
+}
+
+export interface toolColorType {
+    r: number,
+    g: number,
+    b: number
+}
+
+export interface seimgData {
+    pid: number,
+    uid: number,
+    title: string,
+    author: string,
+    r18: boolean,
+    tags: string[],
+    width: number,
+    hieght: number,
+    type: 'jpg' | 'jpeg' | 'png' | 'gif',
+    url: string
 }

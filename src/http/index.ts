@@ -16,8 +16,16 @@ export const getNetease = (data: obj) => {
     return axios.get(`${API_HULIAPI}netease`, { params: data });
 }
 
+export const getTieba = (data: obj) => {
+    return axios.get(`${API_HULIAPI}tieba`, { params: data });
+}
+
 export const getMcmotd = (data: obj) => {
     return axios.get(`${API_HULIAPI}${ data.type === 'be' ? 'motdpe' : 'motd' }`, { params: data });
+}
+
+export const getMcskin = (data: obj) => {
+    return axios.get(`${API_HULIAPI}mcskin`, { params: data });
 }
 
 export const getBili = (data: obj) => {

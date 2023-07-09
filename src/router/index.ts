@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory/* , createWebHistory */ } from 'vue-
 import Home from '../views/HomePage.vue';
 import About from '../views/AboutPage.vue';
 import Doc from '../views/DocPage.vue';
+import Depend from '../views/DependPage.vue';
 import Error404 from '../views/Error404Page.vue';
 
 const routes = [
@@ -15,8 +16,14 @@ const routes = [
     },
     {
         path: '/doc/:docType',
-        // component: () => import('../views/DocPage.vue'),
         component: Doc,
+        meta: {
+            keepAlive: false
+        }
+    },
+    {
+        path: '/page/:pageType',
+        component: Depend,
         meta: {
             keepAlive: false
         }

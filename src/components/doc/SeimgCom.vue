@@ -1,7 +1,7 @@
 <template>
     <div class="mdui-text-center mdui-center">
         <button @click="getData()"
-            class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">再来一张</button>
+            class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple" mdui-tooltip="{content: '首冲伤身哦~'}">再来一张</button>
         <br>
         <div class="mdui-text-valign" v-if="(<resType>dataRes).data">
             <strong>

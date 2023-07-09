@@ -1,7 +1,7 @@
 {
   "name": "hulitool",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -28,7 +28,6 @@
     "pinia-plugin-persistedstate": "^3.1.0",
     "png2icons": "^2.0.1",
     "qrcode.vue": "3.X",
-    "ua-device": "^0.1.10",
     "ua-parser-js": "^1.0.35",
     "vue": "^3.2.47",
     "vue-clipboard2": "^0.3.3",

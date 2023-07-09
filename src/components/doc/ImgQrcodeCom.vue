@@ -43,7 +43,7 @@
             <label class="mdui-textfield-label">图片前景色</label>
             <input v-model="foreground" class="mdui-textfield-input">
         </div>
-        <button @click="downLoadQRcode"
+        <button @click="downLoadQRcode" mdui-tooltip="{content: '下载到本地'}"
             class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple"><i class="mdui-icon material-icons">file_download</i>下载</button>
         <qrcode-vue :value="content" :size="size" :margin="margin" :level="level" :background="background" :foreground="foreground" />
     </div>
@@ -53,7 +53,7 @@
 import { ref } from 'vue';
 import QrcodeVue from 'qrcode.vue';
 
-const content = ref<string>('当一个社会只容得下一个声音 不管你为人如何，只要理念不合你就是坏人的世界 庆幸能够活在一个有言论自由的世界'), size = ref<number>(200),
+const content = ref<string>('解封、自由、人命'), size = ref<number>(200),
 margin = ref<number>(0), level = ref<'L' | 'M' | 'Q' | 'H'>('H'),
 background = ref<string>('#ffffff'), foreground = ref<string>('#000000'); 
 

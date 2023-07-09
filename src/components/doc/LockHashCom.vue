@@ -20,7 +20,7 @@
             <option value="SHA3">SHA3</option>
             <option value="RIPEMD160">RIPEMD160</option>
         </select>
-        <label style="margin-left: 10px;" class="mdui-checkbox">
+        <label style="margin-left: 10px;" class="mdui-checkbox" mdui-tooltip="{content: '使用密钥'}">
             <input type="checkbox" v-model="hmac" />
             <i class="mdui-checkbox-icon"></i>
             Hmac
@@ -37,5 +37,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { LockHashCom, LockHashType } from '../../function';
-const msg = ref('解封、自由、人命​'), msg_after = ref(''), type = ref<LockHashType>('MD5'), hmac = ref<boolean>(false), key = ref<string>('');
+const msg = ref('當一個社會只容得下一個聲音 不管你為人如何，只要理念不合你就是壞人的世界 慶幸能夠活在一個有言論自由的世界 用肉去上了一堂課 很痛但很有意義 - 致自由​'), msg_after = ref(''), type = ref<LockHashType>('MD5'), hmac = ref<boolean>(false), key = ref<string>('');
 </script>

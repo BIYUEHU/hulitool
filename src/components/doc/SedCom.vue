@@ -14,7 +14,7 @@
         <div class="mdui-row-xs-1">
             <div class="mdui-col-xs-1">
                 <button @click="(msg && getData({ msg })) || tips(1)"
-                    class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple">社工查询</button>
+                    class="mdui-btn mdui-btn-block mdui-btn-dense mdui-color-theme-accent mdui-ripple" mdui-tooltip="{content: '请勿用于违法途径'}">点击查询</button>
             </div>
         </div>
         <br>

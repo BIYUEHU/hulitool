@@ -13,7 +13,7 @@
             <option value="0" selected>\u____</option>
             <option value="1" disabled>&#____;</option>
         </select>
-        <label style="margin-left: 10px;" class="mdui-checkbox">
+        <label style="margin-left: 10px;" class="mdui-checkbox" mdui-tooltip="{content: '默认只编码非ASCLL字符'}">
             <input type="checkbox" v-model="allcode" />
             <i class="mdui-checkbox-icon"></i>
             全部编码

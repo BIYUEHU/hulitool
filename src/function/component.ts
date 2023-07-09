@@ -4,9 +4,10 @@ import BeautifyJs from "js-beautify";
 // import * as terser from 'terser'
 import * as Base64 from 'js-base64';
 import CryptoJS from 'crypto-js';
-import { tips } from "./method";
-import { obj, lrcType, CodeHandleFunc, CodeHandleVoidFunc, CodeFormatFunc, CodeHandleTypeFunc, LockHashType, LockLockType } from './interface';
 import UAParser from "ua-parser-js";
+import mdui from 'mdui';
+import { tips } from "./method";
+import { obj, docType, lrcType, CodeHandleFunc, CodeHandleVoidFunc, CodeFormatFunc, CodeHandleTypeFunc, LockHashType, LockLockType } from './interface';
 
 export class App {
     public static setThemeLayout = (bodyClass: DOMTokenList, themeLayout: 'light' | 'dark' | 'time' | 'auto'): void => {
@@ -32,11 +33,23 @@ export class App {
                 break;
         }
     }
+
+    public static getDoc = (DocData: docType[], doctype: string): docType | undefined => {
+        return DocData.find(
+            dataDoc => dataDoc.type === doctype
+        )
+    };
 }
 
 export class DocPage {
     public static loadCom = (component: string): Promise<any> => {
         return import(`../components/doc/${component}.vue`);
+    }
+}
+
+export class DependPage {
+    public static loadCom = (component: string): Promise<any> => {
+        return import(`../views/page/${component}.vue`);
     }
 }
 
@@ -264,4 +277,75 @@ export class LockLockCom {
     }
 }
 
+export class ToolPixivPage {
+    public static showError = (element: Element, state: boolean) => {
+        if (!state) {
+            element.classList.value += "mdui-textfield-invalid";
+                console.log(1);
+                
+        } else {
+            element.classList.value.replace("mdui-textfield-invalid", '');
+        }
+    }
+    
+    public static showMessage = (message: string) => {
+        mdui.snackbar(`${message}<a href="javascript:void(0)"
+            class="mdui-snackbar-action mdui-btn mdui-ripple mdui-ripple-white">Retry</a>`)
+    }
+}
+
 export const ToolUaCom = (userAgentStr: string = navigator.userAgent) => UAParser(userAgentStr);
+
+export class ToolColorCom {
+    public static randomColor = (): string => {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    public static hexToRgb = (hex: string) => {
+        let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+    public static rgbToHex = (r: number, g: number, b: number): string => {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+}
+
+export class ToolTimeCom {
+    public static encode = (timestamp: number): string => {
+        let date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        let Y = date.getFullYear() + '-';
+        let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        let D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
+        let h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        let m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        return Y + M + D + h + m + s;
+    }
+
+    public static decode = (time: string): number => Date.parse(new Date(time).toString()) / 1000;
+}
+
+export const ToolRandomCom = (min: number = 1, max: number = 50, nums: number = 5, isrepeat: boolean = false): number[] => {
+    const result = [];
+
+    if (isrepeat) {
+        for (let i = 0; i < nums; i++) {
+            result.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        }
+    } else {
+        let numsArray = Array.from({ length: max - min + 1 }, (_, i) => i + min);
+        for (let i = 0; i < nums; i++) {
+            let index = Math.floor(Math.random() * numsArray.length);
+            result.push(numsArray.splice(index, 1)[0]);
+        }
+    }
+    return result;
+} 

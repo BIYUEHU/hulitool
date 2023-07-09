@@ -1,3 +1,11 @@
+:root {
+    --background-color: ;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
 .child {
     margin: 10px !important;
 }
@@ -41,4 +49,11 @@ a {
 .huli-image-normal {
     width: 500px;
     max-width: 90%;
+}
+
+.huli-button-blue {
+    font-size: 20px;
+    border: 4px;
+    border-color: deepskyblue;
+    color: deepskyblue;
 }
