@@ -30,6 +30,12 @@ body {
     z-index: -1;
 }
 
+#main {
+    margin-top: 7%;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-bottom: 20px;
+}
 
 .mdui-select-menu-item {
     height: 48px;
@@ -56,4 +62,19 @@ a {
     border: 4px;
     border-color: deepskyblue;
     color: deepskyblue;
+}
+
+.snackbar-me {
+    text-align: right;
+    background-color: rgb(18, 183, 245);
+    color: white;
+    padding: 8px;
+    border-radius: 9%;
+}
+
+.snackbar-bot {
+    text-align: right;
+    background-color: rgb(229, 227, 225);
+    padding: 8px;
+    border-radius: 9%;
 }

@@ -2,11 +2,12 @@
 import { defineStore } from 'pinia';
 
 const settings = {
+    skey: "",
     background: "",
     theme: {
         layout: "auto",
         primary: "cyan",
-        accent: "light-green"
+        accent: "blue"
     }
 }
 
@@ -14,6 +15,7 @@ const settings = {
 export const useMainStore = defineStore('main', {
     state: () => {
         return {
+            chatgpt: [],
             settings: JSON.parse(JSON.stringify(settings))
         }
     },

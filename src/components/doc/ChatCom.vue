@@ -1,11 +1,11 @@
 <template>
     <div style="width: 90%;max-width: 700px;">
         <div class="mdui-col-xs-10 mdui-textfield">
-            <input class="mdui-textfield-input" v-model="msg" placeholder="消息内容" />
+            <input class="mdui-textfield-input" v-model="content" placeholder="消息内容" />
         </div>
         <div class="mdui-row-xs-1 mdui-col-xs-1">
-            <button class="mdui-btn btn" @click="(msg && send({ msg })) || tips(1)"><i class="mdui-icon material-icons"><svg
-                        class="icon"
+            <button class="mdui-btn btn" @click="content ? send({ content }) : tips(1)"><i
+                    class="mdui-icon material-icons"><svg class="icon"
                         style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
                         viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4602">
                         <path
@@ -15,6 +15,13 @@
             </button>
         </div>
         <br>
+        <div class="mdui-row-xs-1">
+            <div class="mdui-col">
+                <button @click="chatgpt = []"
+                    class="mdui-btn mdui-btn-block mdui-btn-raised mdui-color-red mdui-ripple">清除聊天记录</button>
+            </div>
+        </div>
+        <br>
         <div class="mdui-col-xs-12 mdui-row-xs-1 mdui-card mdui-hoverable">
             <div class="mdui-card-header mdui-row">
                 <div class="mdui-card-header-title">
@@ -22,10 +29,10 @@
                 </div>
             </div>
             <div class="mdui-card-content">
-                <span v-if="(<resType>dataRes).code === 500">
-                    {{ timer(<string>(<resType>dataRes).data) }}
+                <span v-if="typeof (<resType>dataRes).created === 'number'">
+                    {{ timer(<string>(<resType>dataRes).choices[0].message.content) }}
                 </span>
-                <div v-for="message in messageList" :key="message">
+                <div v-for="message in chatgpt" :key="message">
                     <span v-if="message[0] === 0" class="snackbar-me">
                         我: {{ message[1] }}
                     </span>
@@ -40,6 +47,15 @@
             <div class="mdui-card-header-subtitle"></div>
         </div>
     </div>
+    
+<!--     <div class="mdui-dialog" id="delete" style="display: block;top: 545px; height: 189px;">
+        <div class="mdui-dialog-title">确认框</div>
+        <div class="mdui-dialog-content" style="height: 69px;">确定要要删除吗?</div>
+        <div class="mdui-dialog-actions">
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close="">CANCEL</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">OK</button>
+        </div>
+    </div> -->
 </template>
 
 <style scoped>
@@ -52,57 +68,56 @@
 .btn:hover {
     box-shadow: 0px 1px 5px rgb(229, 229, 229);
 }
-
-.snackbar-me {
-    text-align: right;
-    background-color: rgb(18, 183, 245);
-    color: white;
-    padding: 8px;
-    border-radius: 9%;
-}
-
-.snackbar-bot {
-    text-align: right;
-    background-color: rgb(229, 227, 225);
-    padding: 8px;
-    border-radius: 9%;
-}
 </style>
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
 import { resType, tips, ChatCom } from '../../function';
-const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
+import { useMainStore } from '../../store';
+import { storeToRefs } from 'pinia';
 
-const messageList = ref([]), msg = ref(''), messageAfter: any = ref({});
+const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
+const mainStore = useMainStore();
+const { settings, chatgpt } = storeToRefs(mainStore);
+const apikey: string = settings.value.skey;
+
+const content = ref(''), messageAfter: any = ref({});
 
 interface obj {
-    msg: string
+    content: string
 }
 
 const send = ref((data: obj) => {
-    messageList.value.push([0, data.msg] as never);
-    getData.value(data);
-    msg.value = '';
-    return true;
+    if (!apikey) {
+        tips('请先在设置里填写Skey!', 'red');
+        return;
+    }
+
+    chatgpt.value.push([0, data.content] as never);
+    getData.value({ content: data.content, apikey });
+    content.value = '';
 });
 
 const update = ref((data: obj) => {
     dataRes.value = {};
-    messageList.value.push([1, data.msg] as never);
+    chatgpt.value.push([1, data.content] as never);
 })
 
 
 const timer = (iterator: string | Generator, key?: string) => {
     if (typeof iterator === 'string') {
-        update.value({ msg: iterator });
+        update.value({ content: iterator });
         key = iterator;
         iterator = ChatCom.handler(iterator)
     };
     const element = iterator.next();
     if (element.done === false) {
         messageAfter.value[key as string] = messageAfter.value[key as string] ? messageAfter.value[key as string] += element.value : element.value;
-        setTimeout(() => timer(iterator, key), 0.2 * 1000);
+        let time = 0.2 * 1000;
+        if ((<string>element.value).length > 50) {
+            time = 20;
+        }
+        setTimeout(() => timer(iterator, key), time);
     }
 }
 </script>

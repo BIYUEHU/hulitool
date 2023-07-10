@@ -21,7 +21,7 @@ export const getTieba = (data: obj) => {
 }
 
 export const getMcmotd = (data: obj) => {
-    return axios.get(`${API_HULIAPI}${ data.type === 'be' ? 'motdpe' : 'motd' }`, { params: data });
+    return axios.get(`${API_HULIAPI}${data.type === 'be' ? 'motdpe' : 'motd'}`, { params: data });
 }
 
 export const getMcskin = (data: obj) => {
@@ -52,7 +52,23 @@ export const getTranslate = (data: obj) => {
 }
 
 export const getChat = (data: obj) => {
-    return axios.get(`${API_HULIAPI}chat`, { params: data });
+    return axios({
+        method: 'post',
+        url: 'http://chatgpt.imlolicon.tk/v1/chat/completions',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${data.apikey}`,
+        },
+        data: {
+            model: "gpt-3.5-turbo",
+            messages: [
+                {
+                    role: "user",
+                    content: data.content
+                }
+            ]
+        }
+    });
 }
 
 export const getStat = (id: string, type?: number) => {

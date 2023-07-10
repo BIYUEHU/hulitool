@@ -3,6 +3,10 @@
         <div class="mdui-dialog-title">设置</div>
         <div class="mdui-dialog-content">
             <div class="mdui-textfield">
+                <label class="mdui-textfield-label">ChatGPT Skey</label>
+                <input class="mdui-textfield-input" v-model="settings.skey" type="text" placeholder="请输入Skey" />
+            </div>
+            <div class="mdui-textfield">
                 <label class="mdui-textfield-label">背景图片</label>
                 <input class="mdui-textfield-input" v-model="settings.background" type="text" placeholder="请输入图片URL" />
             </div>

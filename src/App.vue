@@ -7,7 +7,7 @@
     <div v-if="denpendPage">
         <router-view />
     </div>
-    <div v-else :style="`--background-image: url(${settings.background ? settings.background : '/background.jpg'});`"
+    <div v-else :style="`--background-image: url(${settings.background ? settings.background : '/background.png'});`"
         :class="`bg mdui-theme-primary-${settings.theme.primary} mdui-theme-accent-${settings.theme.accent} `">
         <HeaderCom />
         <div class="mdui-typo">
@@ -50,6 +50,6 @@ onMounted(() => App.setThemeLayout((<ComponentPublicInstance>proxy).$el.offsetPa
 provide('settings', settings);
 provide('mainStore', mainStore);
 provide('settingsMethod', {
-    setThemeLayout: () => App.setThemeLayout((<ComponentPublicInstance>proxy).$el.offsetParent.classList, settings.value.theme.layout)
+    setThemeLayout: () => App.setThemeLayout((<ComponentPublicInstance>proxy).$el.offsetParent.classList, settings.value.theme.layout /* === 'light' ? settings.value.theme.primary.toLowerCase().replace(' ', '') : settings.value.theme.layout */ )
 });
 </script>

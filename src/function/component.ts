@@ -1,3 +1,8 @@
+/*
+ * @Author: Biyuehu biyuehuya@gmail.com
+ * @Blog: http://imlolicon.tk
+ * @Date: 2023-07-09 21:17:32
+ */
 // import htmlminifier from 'html-minifier';
 // import CleanCSS from "clean-css";
 import BeautifyJs from "js-beautify";
@@ -10,12 +15,13 @@ import { tips } from "./method";
 import { obj, docType, lrcType, CodeHandleFunc, CodeHandleVoidFunc, CodeFormatFunc, CodeHandleTypeFunc, LockHashType, LockLockType } from './interface';
 
 export class App {
-    public static setThemeLayout = (bodyClass: DOMTokenList, themeLayout: 'light' | 'dark' | 'time' | 'auto'): void => {
+    public static setThemeLayout = (bodyClass: DOMTokenList, themeLayout: 'light' | 'dark' | 'time' | 'auto' /* | string */): void => {
         bodyClass.remove('mdui-theme-layout-auto');
-        bodyClass.remove('mdui-theme-layout-light');
+        // bodyClass.remove('mdui-theme-layout-light');
         bodyClass.remove('mdui-theme-layout-dark');
         switch (themeLayout) {
-            case 'light':
+            case 'auto':
+                bodyClass.add('mdui-theme-layout-auto');
                 break;
             case 'dark':
                 bodyClass.add('mdui-theme-layout-dark')
@@ -29,7 +35,9 @@ export class App {
                 }
                 break;
             default:
-                bodyClass.add('mdui-theme-layout-auto');
+                // document.body.style.backgroundColor = themeLayout;
+                // bodyClass.add(`mdui-color-${themeLayout}`);
+                bodyClass.add('mdui-theme-layout-light');
                 break;
         }
     }
@@ -244,7 +252,6 @@ export class LockTextCom {
     }
 
     public static decode: CodeHandleFunc = code => {
-        console.log(code)
         if (code.length === 0) return '';
         code = code.replace(/\\r/g, `\r`);
         code = code.replace(/\\n/g, `\n`);
@@ -281,8 +288,6 @@ export class ToolPixivPage {
     public static showError = (element: Element, state: boolean) => {
         if (!state) {
             element.classList.value += "mdui-textfield-invalid";
-                console.log(1);
-                
         } else {
             element.classList.value.replace("mdui-textfield-invalid", '');
         }

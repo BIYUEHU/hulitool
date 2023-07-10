@@ -20,7 +20,6 @@
     "axios": "^1.4.0",
     "codemirror": "^6.0.1",
     "crypto-js": "^4.1.1",
-    "file-saver": "^2.0.5",
     "js-base64": "^3.7.5",
     "js-beautify": "^1.14.8",
     "mdui": "^1.0.2",
