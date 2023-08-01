@@ -31,9 +31,9 @@
 <script setup lang="ts">
 import { ref, reactive, provide, defineAsyncComponent, watch, getCurrentInstance, ComponentInternalInstance, ComponentPublicInstance } from 'vue';
 import { useRoute } from 'vue-router';
-import * as http from '../http';
-import DocData from "../json/DocData.json";
-import { docType, resType, obj, statType, DocPage, App } from '../function';
+import * as http from '@/http';
+import DocData from "@/json/DocData.json";
+import { docType, resType, obj, statType, DocPage, App } from '@/function';
 
 const { proxy } = <ComponentInternalInstance>getCurrentInstance();
 const progress = ref<boolean>(false),
@@ -108,9 +108,9 @@ const main = (): void => {
 
     DocPage.loadCom((<docType>dataDoc).component!).then(() => {
         Component.value = defineAsyncComponent(() => DocPage.loadCom((<docType>dataDoc).component!));
-    }).catch((/* err */) => {
-        // console.log(`${(<docType>dataDoc).component} 组件不存在!!!`, err);
-        (<ComponentPublicInstance>proxy).$router.push('/404');
+    }).catch((err) => {
+        console.log(`${(<docType>dataDoc).component} 组件不存在!!!`, err);
+        // (<ComponentPublicInstance>proxy).$router.push('/404');
     });
 
     (<docType>dataDoc).origin && getStat();

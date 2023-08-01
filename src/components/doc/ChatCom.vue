@@ -72,8 +72,8 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-import { resType, tips, ChatCom } from '../../function';
-import { useMainStore } from '../../store';
+import { resType, tips, ChatCom } from '@/function';
+import { useMainStore } from '@/store';
 import { storeToRefs } from 'pinia';
 
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));

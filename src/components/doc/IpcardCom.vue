@@ -34,16 +34,16 @@
 <script setup lang="ts">
 import mdui from 'mdui';
 import { ref, getCurrentInstance, ComponentInternalInstance } from 'vue';
-import { copyContent } from '../../function';
+import { copyContent, obj } from '@/function';
 const { proxy } = <ComponentInternalInstance>getCurrentInstance();
 const demoParam = ref('0'), code = ref<string>(''), url = 'https://api.imlolicon.tk/api/ipcard?apikey=b699b2d60915d83f3723272855240c4c&img=';
-const copy = () => copyContent(<any>proxy, `<img src="${url}${demoParam.value}" style="width:500px;max-width: 90%;" />`);
+const copy = () => copyContent(proxy!, `<img src="${url}${demoParam.value}" style="width:500px;max-width: 90%;" />`);
 
 import { Codemirror } from "vue-codemirror";
 import { html } from '@codemirror/lang-html';
 import { oneDark } from '@codemirror/theme-one-dark'
 const extensions = [html(), oneDark];
 
-new (<any>proxy).$mdui.Select('#demo');
+new (proxy as obj).$mdui.Select('#demo');
 mdui.mutation();
 </script>

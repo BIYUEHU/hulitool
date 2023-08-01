@@ -90,7 +90,7 @@
 
 <script setup lang="ts">
 import { ref, inject, onMounted } from 'vue';
-import { tips, resType, NeteaseCom, neteaseData, lrcType } from '../../function';
+import { tips, resType, NeteaseCom, neteaseData, lrcType } from '@/function';
 import { encode } from 'js-base64';
 
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));

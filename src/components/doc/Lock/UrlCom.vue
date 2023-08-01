@@ -19,6 +19,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { LockUrlCom } from '../../function';
+import { LockUrlCom } from '@/function';
 const msg_before = ref('https://tool.imlolicon.tk/#/doc/lock_html?mdui-dialog'), msg_after = ref('');
 </script>

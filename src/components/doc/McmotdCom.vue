@@ -79,7 +79,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-import { tips, resType, obj } from '../../function';
+import { tips, resType, obj } from '@/function';
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 const type = ref('be'), ip = ref(''), port = ref();
 </script>

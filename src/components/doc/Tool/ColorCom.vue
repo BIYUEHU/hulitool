@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue';
-import { ToolColorCom, toolColorType } from '../../function';
+import { ToolColorCom, toolColorType } from '@/function';
 const msg_before = ref<string>(ToolColorCom.randomColor()),
 rgb = reactive(ToolColorCom.hexToRgb(msg_before.value) as toolColorType);
 

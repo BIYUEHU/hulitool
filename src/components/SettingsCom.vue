@@ -57,8 +57,8 @@
 
 <script setup lang="ts">
 import { inject } from 'vue';
-import ThemeData from '../json/ThemeData.json';
-import { tips } from '../function';
+import ThemeData from '@/json/ThemeData.json';
+import { tips } from '@/function';
 
 const settings = inject('settings') as any;
 const mainStore = inject('mainStore') as any;

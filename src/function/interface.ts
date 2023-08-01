@@ -5,14 +5,14 @@ export type CodeFormatFunc = (code: string, tabSize?: number) => string;
 export type LockHashType = 'MD5' | 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512' | 'SHA3' | 'RIPEMD160';
 export type LockLockType = 'AES' | 'DES' | 'Rabbit' | 'RC4' | 'RC4Drop' | 'TripleDES';
 
-export declare interface CodeClass {
+export interface CodeClass {
     format: CodeFormatFunc,
     zip: CodeHandleFunc,
     run?: CodeHandleFunc,
     check?: CodeHandleVoidFunc
 }
 
-export declare interface LockClass {
+export interface LockClass {
     encode: CodeHandleFunc,
     decode: CodeHandleFunc
 }

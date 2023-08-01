@@ -83,7 +83,7 @@
 import { ref } from 'vue';
 import mdui from 'mdui';
 import axios from 'axios';
-import { resType, seimgData, ToolPixivPage } from '../../function';
+import { resType, seimgData, ToolPixivPage } from '@/function';
 
 const stat = ref<number>(NaN), keyword = ref<string>(''), progress = ref<boolean>(false), resultData = ref<seimgData[]>([]);
 axios.get('https://api.imlolicon.tk/api/stat', {

@@ -28,6 +28,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { ToolUaCom } from '../../function';
+import { ToolUaCom } from '@/function';
 const uastr = ref<string>(navigator.userAgent), uaData = ref(ToolUaCom(uastr.value));
 </script>

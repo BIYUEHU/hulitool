@@ -1,4 +1,3 @@
-
 import { defineStore } from 'pinia';
 
 const settings = {
@@ -16,6 +15,7 @@ export const useMainStore = defineStore('main', {
     state: () => {
         return {
             chatgpt: [],
+            emuyu: 0,
             settings: JSON.parse(JSON.stringify(settings))
         }
     },

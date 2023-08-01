@@ -25,10 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import data from '../json/AboutData.json';
+import data from '@/json/AboutData.json';
 </script>
 
-<style>
+<style scoped>
 img {
     margin-right: 5px
 }

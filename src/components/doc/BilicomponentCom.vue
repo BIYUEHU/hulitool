@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-import { tips, resType, biliComponentData } from '../../function';
+import { tips, resType, biliComponentData } from '@/function';
 
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 const uid = ref('');

@@ -47,6 +47,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { ToolRandomCom } from '../../function';
+import { ToolRandomCom } from '@/function';
 const min = ref<number>(0), max = ref<number>(50), nums = ref<number>(5), isrepeat = ref<boolean>(false), result = ref<number[]>([]);
 </script>

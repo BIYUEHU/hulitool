@@ -5,8 +5,8 @@
 <script setup lang="ts">
 import { ref, reactive, defineAsyncComponent, watch, getCurrentInstance, ComponentInternalInstance, ComponentPublicInstance } from 'vue';
 import { useRoute } from 'vue-router';
-import DocData from "../json/DocData.json";
-import { DependPage, docType, obj, App }from '../function';
+import DocData from "@/json/DocData.json";
+import { DependPage, docType, obj, App }from '@/function';
 
 document.body.classList.value = '';
 

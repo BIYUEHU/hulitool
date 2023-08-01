@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { inject, ref } from 'vue';
 import { Codemirror } from "vue-codemirror";
-import { obj } from '../function';
+import { obj } from '@/function';
 
 type langType = 'html' | 'css' | 'javascript' | 'json';
 

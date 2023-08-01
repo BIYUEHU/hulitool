@@ -6,7 +6,7 @@
     <button @click="code ? (code) : tips(1)" class="child mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple" mdui-tooltip="{content: '加密JavaScript代码并压缩'}">混淆</button>
     <button @click="code ? (code = CodeJsCom.format(code)) : tips(1)" class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple">格式化</button>
     <button @click="code ? (code = CodeJsCom.zip(code)) : tips(1)" class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple" mdui-tooltip="{content: '将代码压缩成一行'}">压缩</button>
-    <button @click="copyContent(<any>proxy, code)" class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple">复制</button>
+    <button @click="copyContent(proxy!, code)" class="child mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-btn-raised mdui-ripple">复制</button>
     <div class="mdui-card">
         <div class="mdui-card-header mdui-row">
             <div class="mdui-card-header-title">
@@ -25,7 +25,7 @@ import { ref, getCurrentInstance, ComponentInternalInstance } from 'vue';
 import { Codemirror } from "vue-codemirror";
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark'
-import { tips, copyContent, CodeJsCom } from '../../function';
+import { tips, copyContent, CodeJsCom } from '@/function';
 
 const code = ref<string>(''), result = ref<string>('');
 const extensions = [javascript(), oneDark];

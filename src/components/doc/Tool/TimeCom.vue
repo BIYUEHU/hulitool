@@ -19,6 +19,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { ToolTimeCom } from '../../function';
+import { ToolTimeCom } from '@/function';
 const msg_before = ref(Math.round(new Date() as unknown as number / 1000)), msg_after = ref('');
 </script>

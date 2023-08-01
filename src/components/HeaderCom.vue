@@ -66,9 +66,9 @@
 </template>
 
 <script setup lang="ts">
-import NavData from '../json/NavData.json';
-import DocData from '../json/DocData.json';
-import { navType, navContentType, docType, obj } from '../function';
+import NavData from '@/json/NavData.json';
+import DocData from '@/json/DocData.json';
+import { navType, navContentType, docType, obj } from '@/function';
 import { reactive } from 'vue';
 let docTemp = reactive<obj>({});
 </script>

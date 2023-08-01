@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { LockUnicodeCom } from '../../function';
+import { LockUnicodeCom } from '@/function';
 const msg_before = ref(`The universe said I love you,and because you are love\n宇宙说我爱你，因为你就是爱`), msg_after = ref(''),
 type = ref<0 | 1>(0), decimal = ref<boolean>(false), allcode = ref<boolean>(false);
 </script>

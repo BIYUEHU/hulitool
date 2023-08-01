@@ -50,14 +50,28 @@ export class App {
 }
 
 export class DocPage {
-    public static loadCom = (component: string): Promise<any> => {
-        return import(`../components/doc/${component}.vue`);
+    public static loadCom = (component: string): Promise<obj> => {
+        const arrTemp = component.split('/');
+        const path = arrTemp[0]
+        component = arrTemp[1] ?? path;
+        switch (path) {
+            case 'Tool':
+                return import(`@/components/doc/Tool/${component}.vue`);
+            case 'Code':
+                return import(`@/components/doc/Code/${component}.vue`);
+            case 'Img':
+                return import(`@/components/doc/Img/${component}.vue`);
+            case 'Lock':
+                return import(`@/components/doc/Lock/${component}.vue`);
+            default:
+                return import(`@/components/doc/${component}.vue`);
+        }
     }
 }
 
 export class DependPage {
-    public static loadCom = (component: string): Promise<any> => {
-        return import(`../views/page/${component}.vue`);
+    public static loadCom = (component: string): Promise<obj> => {
+        return import(`@/views/page/${component}.vue`);
     }
 }
 
@@ -292,7 +306,7 @@ export class ToolPixivPage {
             element.classList.value.replace("mdui-textfield-invalid", '');
         }
     }
-    
+
     public static showMessage = (message: string) => {
         mdui.snackbar(`${message}<a href="javascript:void(0)"
             class="mdui-snackbar-action mdui-btn mdui-ripple mdui-ripple-white">Retry</a>`)

@@ -169,122 +169,122 @@
         "type": "code_html",
         "name": "HTML&XML",
         "descr": "格式化 / 压缩",
-        "component": "CodeHtmlCom"
+        "component": "Code/HtmlCom"
     },
     {
         "id": 13,
         "type": "code_css",
         "name": "CSS",
         "descr": "格式化 / 压缩",
-        "component": "CodeCssCom"
+        "component": "Code/CssCom"
     },
     {
         "id": 14,
         "type": "code_js",
         "name": "JS",
         "descr": "运行 / 格式化 / 压缩 / 混淆",
-        "component": "CodeJsCom"
+        "component": "Code/JsCom"
     },
     {
         "id": 15,
         "type": "code_json",
         "name": "JSON",
         "descr": "检验 / 格式化 / 压缩 / 编码",
-        "component": "CodeJsonCom"
+        "component": "Code/JsonCom"
     },
     {
         "id": 16,
         "type": "lock_unicode",
         "name": "Unicode",
         "descr": "万国码转换",
-        "component": "LockUnicodeCom"
+        "component": "Lock/UnicodeCom"
     },
     {
         "id": 17,
         "type": "lock_base64",
         "name": "Base64",
         "descr": "Base64()",
-        "component": "LockBase64Com"
+        "component": "Lock/Base64Com"
     },
     {
         "id": 18,
         "type": "lock_html",
         "name": "HTML实体",
         "descr": "HTML实体转义",
-        "component": "LockHtmlCom"
+        "component": "Lock/HtmlCom"
     },
     {
         "id": 19,
         "type": "lock_url",
         "name": "URL",
         "descr": "地址链接编码",
-        "component": "LockUrlCom"
+        "component": "Lock/UrlCom"
     },
     {
         "id": 20,
         "type": "lock_text",
         "name": "文本转义",
         "descr": "经典的反斜杠",
-        "component": "LockTextCom"
+        "component": "Lock/TextCom"
     },
     {
         "id": 21,
         "type": "lock_hash",
         "name": "哈希",
         "descr": "MD5 / SHA256...",
-        "component": "LockHashCom"
+        "component": "Lock/HashCom"
     },
     {
         "id": 22,
         "type": "lock_lock",
         "name": "加密",
         "descr": "AES / DES...",
-        "component": "LockLockCom"
+        "component": "Lock/LockCom"
     },
     {
         "id": 23,
         "type": "img_png2ico",
         "name": "ICO",
         "descr": "PNG转ICO",
-        "component": "ImgPng2IcoCom"
+        "component": "Img/Png2IcoCom"
     },
     {
         "id": 24,
         "type": "img_base64",
         "name": "Base64&Img",
         "descr": "图片转Base64",
-        "component": "ImgBase64Com"
+        "component": "Img/Base64Com"
     },
     {
         "id": 25,
         "type": "img_qrcode",
         "name": "QR Code",
         "descr": "二维码生成",
-        "component": "ImgQrcodeCom"
+        "component": "Img/QrcodeCom"
     },
     {
         "id": 26,
         "type": "tool_lifecount",
         "name": "人生小格",
-        "component": "ToolLifecountCom"
+        "component": "Tool/LifecountCom"
     },
     {
         "id": 27,
         "type": "tool_emuyu",
         "name": "电子木鱼",
-        "component": "ToolEmuyuCom"
+        "component": "Tool/EmuyuCom"
     },
     {
         "id": 28,
         "type": "tool_tomoto",
         "name": "番茄时钟",
-        "component": "ToolTomotoCom"
+        "component": "Tool/TomotoCom"
     },
     {
         "id": 29,
         "type": "tool_webpage",
         "name": "网页制作器",
-        "component": "ToolWebpageCom"
+        "component": "Tool/WebpageCom"
     },
     {
         "id": 30,
@@ -297,24 +297,24 @@
         "id": 31,
         "type": "tool_ua",
         "name": "UA标识解析",
-        "component": "ToolUaCom"
+        "component": "Tool/UaCom"
     },
     {
         "id": 32,
         "type": "tool_color",
         "name": "随机颜色",
-        "component": "ToolColorCom"
+        "component": "Tool/ColorCom"
     },
     {
         "id": 33,
         "type": "tool_time",
         "name": "时间转换",
-        "component": "ToolTimeCom"
+        "component": "Tool/TimeCom"
     },
     {
         "id": 34,
         "type": "tool_random",
         "name": "随机数生成",
-        "component": "ToolRandomCom"
+        "component": "Tool/RandomCom"
     }
 ]

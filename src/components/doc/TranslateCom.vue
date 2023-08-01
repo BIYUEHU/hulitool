@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-import { tips, resType } from '../../function';
+import { tips, resType } from '@/function';
 const dataRes = ref(<resType | object>inject('dataRes')), getData = ref(<Function>inject('getData'));
 const msg = ref('');
 </script>

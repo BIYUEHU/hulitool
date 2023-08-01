@@ -28,6 +28,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { LockLockCom, LockLockType } from '../../function';
+import { LockLockCom, LockLockType } from '@/function';
 const msg_before = ref('曾经沧海难为水，除却巫山不是云'), msg_after = ref(''), type = ref<LockLockType>('AES'), key = ref<string>('');
 </script>

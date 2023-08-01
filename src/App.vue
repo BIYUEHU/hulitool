@@ -25,13 +25,13 @@
 
 <script setup lang="ts">
 import { provide, getCurrentInstance, onMounted, ComponentInternalInstance, ComponentPublicInstance, watch, ref } from 'vue';
-import HeaderCom from './components/HeaderCom.vue';
-import SettingsCom from './components/SettingsCom.vue';
+import HeaderCom from '@/components/HeaderCom.vue';
+import SettingsCom from '@/components/SettingsCom.vue';
 import { storeToRefs } from 'pinia';
-import { useMainStore } from './store';
-import { App, docType } from './function';
+import { useMainStore } from '@/store';
+import { App, docType } from '@/function';
 
-import DocData from './json/DocData.json';
+import DocData from '@/json/DocData.json';
 import { useRoute } from 'vue-router';
 
 const router = useRoute();
