@@ -11,8 +11,10 @@ import * as Base64 from 'js-base64';
 import CryptoJS from 'crypto-js';
 import UAParser from "ua-parser-js";
 import mdui from 'mdui';
-import { tips } from "./method";
+import { generateRandomString, tips } from "./method";
 import { obj, docType, lrcType, CodeHandleFunc, CodeHandleVoidFunc, CodeFormatFunc, CodeHandleTypeFunc, LockHashType, LockLockType } from './interface';
+import dayjs from "dayjs";
+import { saveAs } from "file-saver";
 
 export class App {
     public static setThemeLayout = (bodyClass: DOMTokenList, themeLayout: 'light' | 'dark' | 'time' | 'auto' /* | string */): void => {
@@ -296,6 +298,174 @@ export class LockLockCom {
         if (code.length < 1) tips('解密失败:密钥错误!')
         return code;
     }
+}
+
+export class ImgBase64Com {
+    public static imgToBase64 = (imgFile: Blob) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(imgFile);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    }
+
+    public static downloadImg = (imageBase64: string, filename: string) => {
+        const blob = this.dataURItoBlob(imageBase64);
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.download = filename;
+        a.href = url;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
+
+    private static dataURItoBlob = (dataURI: string) => {
+        const byteString = atob(dataURI.split(',')[1]);
+        const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+        const ia = new Uint8Array(byteString.length);
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ia], { type: mimeString });
+    }
+}
+
+export class ImgPng2icoCom extends ImgBase64Com {
+    public static Png2ico = async (file: File) => {
+        const img = new Image()
+        img.src = URL.createObjectURL(file)
+        await img.decode()
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d')!
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        return canvas.toDataURL('image/x-icon');
+    }
+}
+
+export class ToolLifeCountCom {
+    public static disabledDate = (time: Date) => {
+        return time.getTime() > (new Date((new Date()).getFullYear() - 1, 0, 1)).getTime();
+    }
+
+    public static countDate = (time: Date) => {
+        const date = dayjs(time);
+        const thisDay = dayjs();
+        const deathDate = date.add(80, 'year');
+        const dateHandle = {
+            past: {
+                year: thisDay.diff(date, 'year', true).toFixed(1),
+                month: thisDay.diff(date, 'month', true).toFixed(1),
+                day: thisDay.diff(date, 'day', true).toFixed(1),
+                hour: thisDay.diff(date, 'hour', true).toFixed(1),
+                minute: parseFloat(thisDay.diff(date, 'minute', true).toFixed(1)),
+                second: parseFloat(thisDay.diff(date, 'second', true).toFixed(1))
+            },
+            have: {
+                year: deathDate.diff(thisDay, 'year', true).toFixed(1),
+                month: deathDate.diff(thisDay, 'month', true).toFixed(1),
+                day: deathDate.diff(thisDay, 'day', true).toFixed(1),
+                hour: deathDate.diff(thisDay, 'hour', true).toFixed(1),
+                minute: parseFloat(deathDate.diff(thisDay, 'minute', true).toFixed(1)),
+                second: parseFloat(deathDate.diff(thisDay, 'second', true).toFixed(1))
+            }
+        };
+        return dateHandle;
+    }
+
+    public static countBlock = (time: Date) => {
+        const blockArr: { type: string }[] = [];
+        const date = dayjs(time);
+        const thisDay = dayjs();
+
+        const oneBlockHour = 24 * 72; // 一个方块代表的小时
+        const haveChildren = 28; // 生孩子的年龄
+
+        const pastDate = thisDay.diff(date, 'day'); // 已经过去的时间(天)
+
+        const deathDate = date.add(80, 'year'); // 80岁的时候
+        const fromDeathDate = deathDate.diff(thisDay, 'day'); // 距离80岁还能活的时间(天)
+
+        const retiredDate = date.add(65, 'year'); // 65岁退休的时候
+        const fromRetiredDate = retiredDate.diff(thisDay, 'day'); // 距离65岁还能活的时间(天)
+
+        const babyrenDate = date.add(18 + haveChildren, 'year'); // 如果28岁生孩子，孩子18岁的时候
+        const fromChildrenDate = babyrenDate.diff(thisDay, 'day'); // 距离孩子18岁还能活的时间(天)
+
+        const parentsDate = date.add(80 - haveChildren, 'year'); // 距离父母死亡
+        const fromParentsDate = parentsDate.diff(thisDay, 'day'); // 距离父母死亡还能活的时间(天)
+
+        const past = ~~(pastDate / 72); // 已经过去的方块
+
+        const sleep = ~~((8 * fromDeathDate) / oneBlockHour); // 碎觉所需的方块
+        const work =
+            fromRetiredDate <= 0
+                ? 0
+                : ~~((8 * fromRetiredDate) / oneBlockHour); // 工作所需的方块
+        const baby =
+            fromChildrenDate <= 0
+                ? 0
+                : ~~((5 * fromChildrenDate) / oneBlockHour); // 陪伴孩子
+        const parents =
+            fromParentsDate <= 0
+                ? 0
+                : ~~(((fromParentsDate / 31) * 24) / oneBlockHour); // 陪伴父母
+        let surplus = 400 - (sleep + past + work + baby + parents);
+        if (surplus <= 0) surplus = 0;
+
+        const data = {
+            past,
+            sleep,
+            work,
+            baby,
+            parents,
+            surplus
+        };
+        Object.keys(data).forEach(e => {
+            for (let i = 0; i < data[e as keyof typeof data]; i++) {
+                blockArr.push({
+                    type: e
+                });
+            }
+        });
+        return {
+            blockArr,
+            length: data
+        };
+    }
+}
+
+export const ToolWebpageCom = (url: string, filename: string) => {
+    fetch(`https://imlolicon.tk/api/agent/?url=${/* LockUrlCom.encode */(url)}`)
+        .then(res => res.text())
+        .then(text => {
+            let urlHandle = url.split('?')[0];
+            urlHandle += urlHandle.at(-1) == '/' ? '' : '/';
+
+            const pattern = /(href|src)="(\.\/|\.\.\/|\/\b|\w)(.*?)"/g;
+            const pattern2 = /^(\w+:\/\/)?([\w.-]+)(:\d+)?/;
+
+            text = text.replace(pattern, (match: string, p1: string, p2: string, p3: string) => {
+                let result; match;
+                if (p3.includes('//')) return `${p1}="${p2}${p3}"`;
+                if (p2.substring(0, 2) === './') result = urlHandle + p2.substring(2);
+                else if (p2.substring(0, 3) === '../' || p2.substring(0, 1) !== '/') result = urlHandle + p2;
+                else if (p2.substring(0, 1) === '/') result = pattern2.exec(urlHandle)![0] + p2;
+                result += p3;
+
+                result = `${p1}="${result}"`;
+                return result;
+            });
+
+            const blob = new Blob([text], { type: "text/html;charset=utf-8" });
+            saveAs(blob, `${filename}_${generateRandomString(5)}.html`);
+        })
+        .catch(error => {
+            tips(`错误：${error}`, 'red');
+        });
 }
 
 export class ToolPixivPage {

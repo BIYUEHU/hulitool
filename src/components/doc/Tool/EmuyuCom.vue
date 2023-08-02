@@ -11,9 +11,9 @@
         <div>
             <input style="margin-bottom: 10px" class="mdui-textfield-input" v-model="autoTime" type="text" placeholder="自动点击间隔时间(0关闭) 单位:秒" />
             <button @click="setAutoTime"
-                class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple">设置自动时间</button>
+                class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">timer</i>设置自动时间</button>
             <button style="margin-left: 10px" @click="emuyu = 0"
-                class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple">清除功德</button>
+                class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">clear</i>清除功德</button>
         </div>
     </div>
 </template>

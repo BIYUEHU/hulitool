@@ -52,6 +52,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import QrcodeVue from 'qrcode.vue';
+import { generateRandomString } from '@/function';
 
 const content = ref<string>('解封、自由、人命'), size = ref<number>(200),
 margin = ref<number>(0), level = ref<'L' | 'M' | 'Q' | 'H'>('H'),
@@ -61,7 +62,7 @@ const downLoadQRcode = ():void => {
     const canvas = <HTMLCanvasElement>document.querySelector('canvas');
     const url = canvas.toDataURL("image/png");
     const aDom = document.createElement("a");
-    aDom.download = 'qrcode';
+    aDom.download = `qrcode_${generateRandomString(5)}`;
     aDom.href = url;
     document.body.appendChild(aDom);
     aDom.click();

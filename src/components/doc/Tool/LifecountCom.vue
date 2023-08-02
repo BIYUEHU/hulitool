@@ -2,7 +2,7 @@
     <div style="margin-top: 20px;">
         <card class="mdui-card mdui-hoverable mdui-textfield picker">
             <el-date-picker style="width: 95%;" v-model="birthDate" :default-value="new Date(2010, 9, 1)" type="date"
-                placeholder="选择你的出生日期" :disabled-date="disabledDate" />
+                placeholder="选择你的出生日期" :disabled-date="ToolLifeCountCom.disabledDate" />
         </card>
 
         <card v-if="birthDate && dateHandle" class="mdui-card mdui-hoverable mdui-textfield">
@@ -76,14 +76,14 @@
             </div>
         </card>
 
-        <card v-if="results" class="mdui-card mdui-hoverable mdui-textfield">
+        <card v-if="results" class="mdui-card mdui-hoverable">
             <div class="mdui-card-header-title">
                 <h4 class="mdui-text-color-theme-accent"><strong>分享小格</strong></h4>
             </div>
             <div class="mdui-card-content">
                 <div class="code">{{ share() }}</div>
                 <button @click="copyContent(proxy!, share())"
-                    class="child mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple">点击复制</button>
+                    class="child mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple"><i class="mdui-icon material-icons">content_copy</i>点击复制</button>
             </div>
         </card>
 
@@ -107,8 +107,7 @@
 
 <script setup lang="ts">
 import { ref, watch, getCurrentInstance, ComponentInternalInstance } from 'vue';
-import dayjs from 'dayjs';
-import { copyContent, obj } from '@/function';
+import { ToolLifeCountCom, copyContent, obj } from '@/function';
 import { Base64 } from 'js-base64';
 
 let timerId: NodeJS.Timer[] = [];
@@ -117,99 +116,14 @@ const birthDate = ref<Date>();
 const dateHandle = ref<obj | null>(null);
 const results = ref<obj>();
 
-const disabledDate = (time: Date) => {
-    return time.getTime() > (new Date((new Date()).getFullYear() - 1, 0, 1)).getTime();
-}
-
 const dateHandler = () => {
-    const date = dayjs(birthDate.value);
-    const thisDay = dayjs();
-    const deathDate = date.add(80, 'year');
-    dateHandle.value = {
-        past: {
-            year: thisDay.diff(date, 'year', true).toFixed(1),
-            month: thisDay.diff(date, 'month', true).toFixed(1),
-            day: thisDay.diff(date, 'day', true).toFixed(1),
-            hour: thisDay.diff(date, 'hour', true).toFixed(1),
-            minute: thisDay.diff(date, 'minute', true).toFixed(1),
-            second: thisDay.diff(date, 'second', true).toFixed(1)
-        },
-        have: {
-            year: deathDate.diff(thisDay, 'year', true).toFixed(1),
-            month: deathDate.diff(thisDay, 'month', true).toFixed(1),
-            day: deathDate.diff(thisDay, 'day', true).toFixed(1),
-            hour: deathDate.diff(thisDay, 'hour', true).toFixed(1),
-            minute: deathDate.diff(thisDay, 'minute', true).toFixed(1),
-            second: deathDate.diff(thisDay, 'second', true).toFixed(1)
-        }
-    };
-    dateHandle.value!.past.minute = parseFloat(dateHandle.value!.past.minute);
-    dateHandle.value!.past.second = parseFloat(dateHandle.value!.past.second);
-    dateHandle.value!.have.minute = parseFloat(dateHandle.value!.have.minute);
-    dateHandle.value!.have.second = parseFloat(dateHandle.value!.have.second);
+    dateHandle.value = ToolLifeCountCom.countDate(birthDate.value!);
     results.value = blockHandler();
 }
 
 const blockHandler = () => {
     if (!birthDate.value) return;
-    const blockArr: { type: string }[] = [];
-    const date = dayjs(birthDate.value);
-    const thisDay = dayjs();
-
-    const oneBlockHour = 24 * 72; // 一个方块代表的小时
-    const haveChildren = 28; // 生孩子的年龄
-
-    const pastDate = thisDay.diff(date, 'day'); // 已经过去的时间(天)
-
-    const deathDate = date.add(80, 'year'); // 80岁的时候
-    const fromDeathDate = deathDate.diff(thisDay, 'day'); // 距离80岁还能活的时间(天)
-
-    const retiredDate = date.add(65, 'year'); // 65岁退休的时候
-    const fromRetiredDate = retiredDate.diff(thisDay, 'day'); // 距离65岁还能活的时间(天)
-
-    const babyrenDate = date.add(18 + haveChildren, 'year'); // 如果28岁生孩子，孩子18岁的时候
-    const fromChildrenDate = babyrenDate.diff(thisDay, 'day'); // 距离孩子18岁还能活的时间(天)
-
-    const parentsDate = date.add(80 - haveChildren, 'year'); // 距离父母死亡
-    const fromParentsDate = parentsDate.diff(thisDay, 'day'); // 距离父母死亡还能活的时间(天)
-
-    const past = ~~(pastDate / 72); // 已经过去的方块
-
-    const sleep = ~~((8 * fromDeathDate) / oneBlockHour); // 碎觉所需的方块
-    const work =
-        fromRetiredDate <= 0
-            ? 0
-            : ~~((8 * fromRetiredDate) / oneBlockHour); // 工作所需的方块
-    const baby =
-        fromChildrenDate <= 0
-            ? 0
-            : ~~((5 * fromChildrenDate) / oneBlockHour); // 陪伴孩子
-    const parents =
-        fromParentsDate <= 0
-            ? 0
-            : ~~(((fromParentsDate / 31) * 24) / oneBlockHour); // 陪伴父母
-    let surplus = 400 - (sleep + past + work + baby + parents);
-    if (surplus <= 0) surplus = 0;
-
-    const data = {
-        past,
-        sleep,
-        work,
-        baby,
-        parents,
-        surplus
-    };
-    Object.keys(data).forEach(e => {
-        for (let i = 0; i < data[e as keyof typeof data]; i++) {
-            blockArr.push({
-                type: e
-            });
-        }
-    });
-    return {
-        blockArr,
-        length: data
-    };
+    return ToolLifeCountCom.countBlock(birthDate.value);
 }
 
 const share = () => {
@@ -252,11 +166,6 @@ watch(dateHandle, () => setTimer());
 </script>
 
 <style scoped>
-card {
-    display: block;
-    margin-bottom: 20px;
-}
-
 .picker {
     display: flex;
     justify-content: center;

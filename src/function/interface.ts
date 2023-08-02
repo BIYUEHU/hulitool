@@ -130,3 +130,20 @@ export interface seimgData {
     type: 'jpg' | 'jpeg' | 'png' | 'gif',
     url: string
 }
+
+export interface WebpageParams {
+    key: string,
+    value: string,
+    must: boolean,
+    type: string | 'string' | 'number' | 'boolean',
+    note: string
+}
+
+export interface WebpageData {
+    name: string,
+    descr: string,
+    author: string,
+    url: string,
+    api: string,
+    params: WebpageParams[]
+}

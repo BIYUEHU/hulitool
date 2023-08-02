@@ -51,7 +51,8 @@
                                 <thead>
                                     <tr v-for="item in resultData">
                                         <th><a target="_blank" :href="item.url"><img
-                                                    :style="{ 'max-height': 600, width: item.width }" :src="item.url" /></a>
+                                                    :style="{ 'max-height': '300px', width: item.width }"
+                                                    :src="item.url" /></a>
                                         </th>
                                         <th>
                                             <span>PID: {{ item.pid }}<br></span>
@@ -83,7 +84,7 @@
 import { ref } from 'vue';
 import mdui from 'mdui';
 import axios from 'axios';
-import { resType, seimgData, ToolPixivPage } from '@/function';
+import { resType, seimgData, tips, ToolPixivPage } from '@/function';
 
 const stat = ref<number>(NaN), keyword = ref<string>(''), progress = ref<boolean>(false), resultData = ref<seimgData[]>([]);
 axios.get('https://api.imlolicon.tk/api/stat', {
@@ -93,7 +94,7 @@ axios.get('https://api.imlolicon.tk/api/stat', {
     }
 }).then(res => {
     stat.value = <number>(<resType>res.data).data;
-})
+}).catch(err => tips(`错误：${err}`, 'red'));
 
 const getImgsData = () => {
     progress.value = true;
@@ -106,15 +107,15 @@ const getImgsData = () => {
             }
         }).then(res => {
             const data: resType = res.data;
-            if (data.code === 500 && (<seimgData[]>data.data)[0].pid == null) {
+            if (data.code === 500 && (<seimgData[]>data.data)[0].pid !== null) {
                 resultData.value.push((<seimgData[]>data.data)[0]);
-            } else if (data.code === 500 && (<seimgData[]>data.data)[0].pid !== null) {
+            } else if (data.code === 500 && (<seimgData[]>data.data)[0].pid === null) {
                 showError(false);
             } else {
                 ToolPixivPage.showMessage(`Error: ${data.message}`);
             }
             progress.value = false;
-        })
+        }).catch(err => tips(`错误：${err}`, 'red'));
     } catch (err) {
         ToolPixivPage.showMessage(`Error: ${err}`);
     }

@@ -32,9 +32,28 @@
         "pinia-plugin-persistedstate",
         "png2icons",
         "qrcode.vue",
-        "ua-parser-js"
+        "ua-parser-js",
+        "file-saver",
+        "dayjs",
+        "element-plus"
     ],
     "changelog": [
+        {
+            "title": "v1.1.0 2023/8/2",
+            "content": [
+                "日常工具-人生小格功能",
+                "新增常工具-电子木鱼功能",
+                "新增日常工具-番茄时钟功能",
+                "新增日常工具-网页制作器功能",
+                "新增图片工具-ICO功能",
+                "新增图片工具-Base64&Img功能",
+                "新增部分Tooltip功能",
+                "新增部分错误捕获功能",
+                "更改BTC为自动复制",
+                "更改信息页的部分细节",
+                "修复了Pixiv搜图无法弹出图片的问题"
+            ]
+        },
         {
             "title": "V1.0.0 2023/7/10",
             "content": [
@@ -54,6 +73,26 @@
         }
     ],
     "todo": [
+        {
+            "title": "2023/8/2",
+            "content": [
+                "~12个在线接口功能",
+                "~4个代码处理功能主要内容",
+                "~7个编码加密功能",
+                "~<mark>图片工具-QRCode</mark>功能",
+                "~4个日常工具功能",
+                "~404错误页面",
+                "~主题颜色设置和背景设置功能",
+                "~<mark>日常工具-人生小格</mark>功能",
+                "~<mark>日常工具-电子木鱼</mark>功能",
+                "~<mark>日常工具-番茄时钟</mark>功能",
+                "~<mark>日常工具-网页制作器</mark>功能",
+                "~<mark>图片工具-ICO</mark>功能",
+                "~<mark>图片工具-Base64&Img</mark>功能",
+                "<mark>代码处理-JS</mark>的混淆功能",
+                "<mark>代码处理-JSON</mark>的编码解码功能"
+            ]
+        },
         {
             "title": "2023/7/10",
             "content": [

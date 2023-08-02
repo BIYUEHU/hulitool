@@ -6,6 +6,11 @@ body {
     background-color: var(--background-color);
 }
 
+card {
+    display: block;
+    margin-bottom: 20px;
+}
+
 .child {
     margin: 10px !important;
 }

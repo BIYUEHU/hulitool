@@ -34,3 +34,13 @@ export const tips = (code: number | string, color?: string): void => {
     if (color) message = `<span style="color:${color}">${message}</span>`;
     mdui.snackbar(message as string);
 }
+
+export const generateRandomString = (length: number): string => {
+    const chars = 'ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz123456789';
+    let randomString = '';
+    for (let i = 0; i < length; i++) {
+        const rand = Math.floor(Math.random() * chars.length);
+        randomString += chars.substring(rand, rand + 1);
+    }
+    return randomString;
+}

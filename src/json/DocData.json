@@ -246,7 +246,7 @@
         "type": "img_png2ico",
         "name": "ICO",
         "descr": "PNG转ICO",
-        "component": "Img/Png2IcoCom"
+        "component": "Img/Png2icoCom"
     },
     {
         "id": 24,
@@ -276,9 +276,9 @@
     },
     {
         "id": 28,
-        "type": "tool_tomoto",
+        "type": "tool_tomato",
         "name": "番茄时钟",
-        "component": "Tool/TomotoCom"
+        "component": "Tool/TomatoCom"
     },
     {
         "id": 29,

@@ -6,8 +6,8 @@
         </div>
         <div class="mdui-m-b-2 mdui-m-t-5 mdui-container" v-if="dataDoc">
             <span class="mdui-typo">
-            <h3>{{ (dataDoc as docType).name }}<small v-if="(dataDoc as docType).descr"><br>{{ (dataDoc as
-                docType).descr }}</small></h3>
+                <h3>{{ (dataDoc as docType).name }}<small v-if="(dataDoc as docType).descr"><br>{{ (dataDoc as
+                    docType).descr }}</small></h3>
             </span>
             <div v-if="(<docType>dataDoc).origin">
                 <strong v-if="(dataDoc as docType).origin!.from">来源:{{ (dataDoc as docType).origin!.from
@@ -33,7 +33,7 @@ import { ref, reactive, provide, defineAsyncComponent, watch, getCurrentInstance
 import { useRoute } from 'vue-router';
 import * as http from '@/http';
 import DocData from "@/json/DocData.json";
-import { docType, resType, obj, statType, DocPage, App } from '@/function';
+import { docType, resType, obj, statType, DocPage, App, tips } from '@/function';
 
 const { proxy } = <ComponentInternalInstance>getCurrentInstance();
 const progress = ref<boolean>(false),
@@ -55,7 +55,7 @@ const getStat = (): void => {
     });
     http.getStat((<docType>dataDoc).origin!.stat, 1).then((res) => {
         dataStat.day = res.data.data;
-    });
+    }).catch(err => tips(`错误：${err}`, 'red'));
 }
 
 /* 请求具体的API获取数据 */
@@ -78,13 +78,13 @@ const getData = (dataReq?: obj | null, auto: Boolean = true): boolean => {
                     dataRes.value = Res;
                     progressView()
                 };
-            });
+            }).catch((err: string) => tips(`错误：${err}`, 'red'));
         }
     } else {
         Promise.then((res: res2) => {
             dataRes.value = res.data;
             progressView();
-        })
+        }).catch((err: string) => tips(`错误：${err}`, 'red'))
     };
     getStat();
 
@@ -109,8 +109,9 @@ const main = (): void => {
     DocPage.loadCom((<docType>dataDoc).component!).then(() => {
         Component.value = defineAsyncComponent(() => DocPage.loadCom((<docType>dataDoc).component!));
     }).catch((err) => {
-        console.log(`${(<docType>dataDoc).component} 组件不存在!!!`, err);
-        // (<ComponentPublicInstance>proxy).$router.push('/404');
+        console.log(err);
+        tips(`错误：${err}`, 'red');
+        (<ComponentPublicInstance>proxy).$router.push('/404');
     });
 
     (<docType>dataDoc).origin && getStat();

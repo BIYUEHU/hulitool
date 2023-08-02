@@ -14,8 +14,8 @@
 
         <div class="mdui-dialog" id="sponsor" style="display: block; top: 545px; height: 189px;">
             <div class="mdui-dialog-title">Sponsor</div>
-            <div class="mdui-dialog-content" style="height: 69px;">BTC地址:
-                <mark mdui-tooltip="{content: '手动复制'}">{{ data.btc }}</mark>
+            <div @click="copyContent(proxy!, data.btc)" class="mdui-dialog-content" style="height: 69px;">BTC地址:
+                <mark mdui-tooltip="{content: '点击复制'}">{{ data.btc }}</mark>
             </div>
             <div class="mdui-dialog-actions">
                 <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">OK</button>
@@ -26,6 +26,11 @@
 
 <script setup lang="ts">
 import data from '@/json/AboutData.json';
+import { copyContent } from '@/function';
+import { getCurrentInstance, ComponentInternalInstance } from 'vue';
+
+const { proxy } = getCurrentInstance() as ComponentInternalInstance ;
+
 </script>
 
 <style scoped>
