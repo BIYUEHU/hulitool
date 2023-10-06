@@ -8,7 +8,7 @@
         "auto": true,
         "origin": {
             "from": "IALAPI",
-            "doc": "https://imlolicon.tk/archives/221/",
+            "doc": "https://hotaru.icu/archives/221/",
             "stat": "seimg_ialapi"
         }
     },
@@ -21,7 +21,7 @@
         "auto": true,
         "origin": {
             "from": "IALAPI",
-            "doc": "http://imlolicon.tk/archives/129/",
+            "doc": "https://hotaru.icu/archives/129/",
             "stat": "hitokoto_ialapi"
         }
     },
@@ -33,7 +33,7 @@
         "http": "getNetease",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/netease",
+            "doc": "https://api.hotaru.icu/iluh/netease",
             "stat": "netease_inside"
         }
     },
@@ -46,7 +46,7 @@
         "http": "getTieba",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/tieba",
+            "doc": "https://api.hotaru.icu/iluh/tieba",
             "stat": "tieba_inside"
         }
     },
@@ -59,7 +59,7 @@
         "http": "getMcmotd",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/motdpe",
+            "doc": "https://api.hotaru.icu/iluh/motdpe",
             "stat": "motdpe_inside"
         }
     },
@@ -72,7 +72,7 @@
         "http": "getMcskin",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/mcskin",
+            "doc": "https://api.hotaru.icu/iluh/mcskin",
             "stat": "mcskin_inside"
         }
     },
@@ -85,7 +85,7 @@
         "http": "getBilicomponent",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/component",
+            "doc": "https://api.hotaru.icu/iluh/component",
             "stat": "component_inside"
         }
     },
@@ -98,7 +98,7 @@
         "http": "getBili",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/biligetv",
+            "doc": "https://api.hotaru.icu/iluh/biligetv",
             "stat": "bilidlv_inside"
         }
     },
@@ -110,7 +110,7 @@
         "component": "IpcardCom",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/ipcard",
+            "doc": "https://api.hotaru.icu/iluh/ipcard",
             "stat": "ipcard_inside"
         }
     },
@@ -123,7 +123,7 @@
         "http": "getSed",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/sed",
+            "doc": "https://api.hotaru.icu/iluh/sed",
             "stat": "sed_inside"
         }
     },
@@ -135,7 +135,7 @@
         "http": "getQq",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/qqget",
+            "doc": "https://api.hotaru.icu/iluh/qqget",
             "stat": "qqget_inside"
         }
     },
@@ -147,7 +147,7 @@
         "http": "getTranslate",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/fanyi",
+            "doc": "https://api.hotaru.icu/iluh/fanyi",
             "stat": "fanyi_inside"
         }
     },
@@ -160,7 +160,7 @@
         "http": "getChat",
         "origin": {
             "from": "HULIAPI",
-            "doc": "https://api.imlolicon.tk/iluh/chat",
+            "doc": "https://api.hotaru.icu/iluh/chat",
             "stat": "chat_inside"
         }
     },

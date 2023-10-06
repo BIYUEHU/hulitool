@@ -3,8 +3,8 @@
         "name": "新年祝福页",
         "descr": "兔年快乐呀~",
         "author": "unknown",
-        "url": "https://api.imlolicon.tk/iluh/newyear",
-        "api": "https://api.imlolicon.tk/api/newyear",
+        "url": "https://api.hotaru.icu/iluh/newyear",
+        "api": "https://api.hotaru.icu/api/newyear",
         "params": [
             {
                 "key": "title",
@@ -33,8 +33,8 @@
         "name": "圣诞祝福页",
         "descr": "Merry Christmas~",
         "author": "unknown",
-        "url": "https://api.imlolicon.tk/iluh/chr",
-        "api": "https://api.imlolicon.tk/api/chr",
+        "url": "https://api.hotaru.icu/iluh/chr",
+        "api": "https://api.hotaru.icu/api/chr",
         "params": [
             {
                 "key": "msg",
@@ -56,8 +56,8 @@
         "name": "倒计时页面",
         "descr": "考试、假期、节日倒计时等",
         "author": "猫狗鼠鱼 & 糊狸",
-        "url": "https://api.imlolicon.tk/iluh/lasttime",
-        "api": "https://api.imlolicon.tk/api/lasttime",
+        "url": "https://api.hotaru.icu/iluh/lasttime",
+        "api": "https://api.hotaru.icu/api/lasttime",
         "params": [
             {
                 "key": "time",
@@ -100,8 +100,8 @@
         "name": "APP下载页",
         "descr": "APP下载展示页",
         "author": "HotaruAPI",
-        "url": "https://api.imlolicon.tk/iluh/downloadpage",
-        "api": "https://api.imlolicon.tk/api/downloadpage",
+        "url": "https://api.hotaru.icu/iluh/downloadpage",
+        "api": "https://api.hotaru.icu/api/downloadpage",
         "params": [
             {
                 "key": "name",
@@ -172,8 +172,8 @@
         "name": "表白页",
         "descr": "向ta表白的页面",
         "author": "HotaruAPI",
-        "url": "https://api.imlolicon.tk/iluh/confession",
-        "api": "https://api.imlolicon.tk/api/confession",
+        "url": "https://api.hotaru.icu/iluh/confession",
+        "api": "https://api.hotaru.icu/api/confession",
         "params": [
             {
                 "key": "name",
@@ -195,8 +195,8 @@
         "name": "个人主页生成",
         "descr": "生成个性化的个人主页",
         "author": "HotaruAPI",
-        "url": "https://api.imlolicon.tk/iluh/homepage",
-        "api": "https://api.imlolicon.tk/api/homepage",
+        "url": "https://api.hotaru.icu/iluh/homepage",
+        "api": "https://api.hotaru.icu/api/homepage",
         "params": [
             {
                 "key": "name",
@@ -221,7 +221,7 @@
             },
             {
                 "key": "url",
-                "value": "https://imlolicon.tk",
+                "value": "https://hotaru.icu",
                 "must": true,
                 "type": "string",
                 "note": "按钮链接"
@@ -239,12 +239,12 @@
         "name": "网页跳转页面",
         "descr": "生成跳转页面",
         "author": "HotaruAPI",
-        "url": "https://api.imlolicon.tk/iluh/webjump",
-        "api": "https://api.imlolicon.tk/api/webjump",
+        "url": "https://api.hotaru.icu/iluh/webjump",
+        "api": "https://api.hotaru.icu/api/webjump",
         "params": [
             {
                 "key": "url",
-                "value": "https://g.imlolicon.tk",
+                "value": "https://g.hotaru.icu",
                 "must": true,
                 "type": "string",
                 "note": "输网址"

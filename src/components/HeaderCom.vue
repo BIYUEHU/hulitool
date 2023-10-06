@@ -14,7 +14,7 @@
                     mdui-dialog="{target: '#dialog-settings'}"><i class="mdui-icon material-icons">settings</i></span>
                 <router-link to="/about" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"
                     mdui-tooltip="{content: '关于'}"><i class="mdui-icon material-icons">info</i></router-link>
-                <a href="http://imlolicon.tk" target="_blank"
+                <a href="https://hotaru.icu" target="_blank"
                     class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white mdui-text-color-red"
                     mdui-tooltip="{content: '前往<br>糊狸博客'}"><i class="mdui-icon material-icons">favorite</i></a>
             </div>
