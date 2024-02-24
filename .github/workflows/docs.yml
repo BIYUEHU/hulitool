@@ -34,7 +34,9 @@ jobs:
           cache: pnpm
 
       - name: Build VitePress site
-        run: pnpm build
+        run: |
+          pnpm install
+          pnpm build
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
