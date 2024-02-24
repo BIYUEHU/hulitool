@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@codemirror/lang-css':
+    specifier: ^6.2.1
+    version: 6.2.1(@codemirror/view@6.24.1)
   '@codemirror/lang-html':
     specifier: ^6.4.5
     version: 6.4.8
