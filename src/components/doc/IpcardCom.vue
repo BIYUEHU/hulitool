@@ -2,7 +2,6 @@
   <div>
     <h2><strong>演示效果</strong></h2>
     <label class="mdui-textfield-label">选择角色</label>
-    {{ demoParam }}
     <form>
       <label v-for="(value, index) in charters" :key="index" class="mdui-radio">
         <input
