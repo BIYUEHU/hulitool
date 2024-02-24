@@ -1,123 +1,118 @@
 {
-    "btc": "bc1qe0kn3hkqls54rfrjkj5ezcyvtk8suxcy0lfz3r",
-    "bandage": [
-        [
-            "https://img.shields.io/github/package-json/v/biyuehu/hulitool",
-            "version"
-        ],
-        [
-            "https://camo.githubusercontent.com/8addc1e46efd92165de0d5fa6d5fd6a3817251a50a45544710ae4eaf486e3fe5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f626979756568752f6b6f746f72692d626f743f636f6c6f723d64656570677265656e",
-            "license"
-        ],
-        [
-            "https://img.shields.io/github/stars/biyuehu/hulitool",
-            "stars"
-        ],
-        [
-            "https://img.shields.io/github/commit-activity/t/biyuehu/hulitool",
-            "commits"
-        ]
+  "btc": "bc1qe0kn3hkqls54rfrjkj5ezcyvtk8suxcy0lfz3r",
+  "bandage": [
+    [
+      "https://img.shields.io/github/package-json/v/biyuehu/hulitool",
+      "version"
     ],
-    "package": [
-        "vue",
-        "vue-clipboard2",
-        "vue-codemirror",
-        "vue-router",
-        "axios",
-        "codemirror",
-        "js-base64",
-        "js-beautify",
-        "mdui",
-        "pinia",
-        "pinia-plugin-persistedstate",
-        "png2icons",
-        "qrcode.vue",
-        "ua-parser-js",
-        "file-saver",
-        "dayjs",
-        "element-plus"
+    ["https://img.shields.io/github/stars/biyuehu/hulitool", "stars"],
+    [
+      "https://img.shields.io/github/commit-activity/t/biyuehu/hulitool",
+      "commits"
     ],
-    "changelog": [
-        {
-            "title": "v1.1.1 2023/10/6",
-            "content": [
-                "更新了接口地址"
-            ]
-        },
-        {
-            "title": "v1.1.0 2023/8/2",
-            "content": [
-                "日常工具-人生小格功能",
-                "新增常工具-电子木鱼功能",
-                "新增日常工具-番茄时钟功能",
-                "新增日常工具-网页制作器功能",
-                "新增图片工具-ICO功能",
-                "新增图片工具-Base64&Img功能",
-                "新增部分Tooltip功能",
-                "新增部分错误捕获功能",
-                "更改BTC为自动复制",
-                "更改信息页的部分细节",
-                "修复了Pixiv搜图无法弹出图片的问题"
-            ]
-        },
-        {
-            "title": "V1.0.0 2023/7/10",
-            "content": [
-                "项目主体完善",
-                "新增并实装12个在线接口功能",
-                "新增并实装4个代码处理功能的主要内容",
-                "新增并实装7个编码加密功能",
-                "新增3个图片工具功能",
-                "实装1个图片工具功能",
-                "新增9个图片工具功能",
-                "实装4个图片工具功能",
-                "重构1个图片工具功能，共计5个",
-                "新增主题颜色设置与背景设置功能",
-                "新增部分位置的悬浮提示功能",
-                "新增404错误页面"
-            ]
-        }
-    ],
-    "todo": [
-        {
-            "title": "2023/8/2",
-            "content": [
-                "~12个在线接口功能",
-                "~4个代码处理功能主要内容",
-                "~7个编码加密功能",
-                "~<mark>图片工具-QRCode</mark>功能",
-                "~4个日常工具功能",
-                "~404错误页面",
-                "~主题颜色设置和背景设置功能",
-                "~<mark>日常工具-人生小格</mark>功能",
-                "~<mark>日常工具-电子木鱼</mark>功能",
-                "~<mark>日常工具-番茄时钟</mark>功能",
-                "~<mark>日常工具-网页制作器</mark>功能",
-                "~<mark>图片工具-ICO</mark>功能",
-                "~<mark>图片工具-Base64&Img</mark>功能",
-                "<mark>代码处理-JS</mark>的混淆功能",
-                "<mark>代码处理-JSON</mark>的编码解码功能"
-            ]
-        },
-        {
-            "title": "2023/7/10",
-            "content": [
-                "~12个在线接口功能",
-                "~4个代码处理功能主要内容",
-                "~7个编码加密功能",
-                "~<mark>图片工具-QRCode</mark>功能",
-                "~4个日常工具功能",
-                "~404错误页面",
-                "~主题颜色设置和背景设置功能",
-                "<mark>代码处理-JS</mark>的混淆功能",
-                "<mark>代码处理-JSON</mark>的编码解码功能",
-                "<mark>图片工具-ICO</mark>功能",
-                "<mark>图片工具-Base64&Img</mark>功能",
-                "<mark>日常工具-人生小格</mark>功能",
-                "<mark>日常工具-电子木鱼</mark>功能",
-                "<mark>日常工具-番茄时钟</mark>功能",
-                "<mark>日常工具-网页制作器</mark>功能"
-            ]
-        }
+    [
+      "https://wakatime.com/badge/user/018dc603-712a-4205-a226-d4c9ccd0d02b/project/018dd9da-bcec-4cc8-86fc-bb8b4cace75d.svg",
+      "wakatime"
     ]
+  ],
+  "package": [
+    "vue",
+    "vue-clipboard2",
+    "vue-codemirror",
+    "vue-router",
+    "axios",
+    "codemirror",
+    "js-base64",
+    "js-beautify",
+    "mdui",
+    "pinia",
+    "pinia-plugin-persistedstate",
+    "png2icons",
+    "qrcode.vue",
+    "ua-parser-js",
+    "file-saver",
+    "dayjs",
+    "element-plus"
+  ],
+  "changelog": [
+    {
+      "title": "v1.1.1 2023/10/6",
+      "content": ["更新了接口地址"]
+    },
+    {
+      "title": "v1.1.0 2023/8/2",
+      "content": [
+        "日常工具-人生小格功能",
+        "新增常工具-电子木鱼功能",
+        "新增日常工具-番茄时钟功能",
+        "新增日常工具-网页制作器功能",
+        "新增图片工具-ICO功能",
+        "新增图片工具-Base64&Img功能",
+        "新增部分Tooltip功能",
+        "新增部分错误捕获功能",
+        "更改BTC为自动复制",
+        "更改信息页的部分细节",
+        "修复了Pixiv搜图无法弹出图片的问题"
+      ]
+    },
+    {
+      "title": "V1.0.0 2023/7/10",
+      "content": [
+        "项目主体完善",
+        "新增并实装12个在线接口功能",
+        "新增并实装4个代码处理功能的主要内容",
+        "新增并实装7个编码加密功能",
+        "新增3个图片工具功能",
+        "实装1个图片工具功能",
+        "新增9个图片工具功能",
+        "实装4个图片工具功能",
+        "重构1个图片工具功能，共计5个",
+        "新增主题颜色设置与背景设置功能",
+        "新增部分位置的悬浮提示功能",
+        "新增404错误页面"
+      ]
+    }
+  ],
+  "todo": [
+    {
+      "title": "2023/8/2",
+      "content": [
+        "~12个在线接口功能",
+        "~4个代码处理功能主要内容",
+        "~7个编码加密功能",
+        "~<mark>图片工具-QRCode</mark>功能",
+        "~4个日常工具功能",
+        "~404错误页面",
+        "~主题颜色设置和背景设置功能",
+        "~<mark>日常工具-人生小格</mark>功能",
+        "~<mark>日常工具-电子木鱼</mark>功能",
+        "~<mark>日常工具-番茄时钟</mark>功能",
+        "~<mark>日常工具-网页制作器</mark>功能",
+        "~<mark>图片工具-ICO</mark>功能",
+        "~<mark>图片工具-Base64&Img</mark>功能",
+        "<mark>代码处理-JS</mark>的混淆功能",
+        "<mark>代码处理-JSON</mark>的编码解码功能"
+      ]
+    },
+    {
+      "title": "2023/7/10",
+      "content": [
+        "~12个在线接口功能",
+        "~4个代码处理功能主要内容",
+        "~7个编码加密功能",
+        "~<mark>图片工具-QRCode</mark>功能",
+        "~4个日常工具功能",
+        "~404错误页面",
+        "~主题颜色设置和背景设置功能",
+        "<mark>代码处理-JS</mark>的混淆功能",
+        "<mark>代码处理-JSON</mark>的编码解码功能",
+        "<mark>图片工具-ICO</mark>功能",
+        "<mark>图片工具-Base64&Img</mark>功能",
+        "<mark>日常工具-人生小格</mark>功能",
+        "<mark>日常工具-电子木鱼</mark>功能",
+        "<mark>日常工具-番茄时钟</mark>功能",
+        "<mark>日常工具-网页制作器</mark>功能"
+      ]
+    }
+  ]
 }

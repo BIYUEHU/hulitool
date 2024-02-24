@@ -1,16 +1,15 @@
-![version](https://img.shields.io/github/package-json/v/biyuehu/hulitool)
-![license](https://camo.githubusercontent.com/8addc1e46efd92165de0d5fa6d5fd6a3817251a50a45544710ae4eaf486e3fe5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f626979756568752f6b6f746f72692d626f743f636f6c6f723d64656570677265656e)
-![stars](https://img.shields.io/github/stars/biyuehu/hulitool)
-![commits](https://img.shields.io/github/commit-activity/t/biyuehu/hulitool)
-
 # HULITOOL
 
-该项目是本人的第一个**Vue+TypeScript+Vite+Pinia**项目实战，主要为了练习一下 Vue 框架开发
+![version](https://img.shields.io/github/package-json/v/biyuehu/hulitool)
+![stars](https://img.shields.io/github/stars/biyuehu/hulitool)
+![commits](https://img.shields.io/github/commit-activity/t/biyuehu/hulitool)
+[![wakatime](https://wakatime.com/badge/user/018dc603-712a-4205-a226-d4c9ccd0d02b/project/018dd9da-bcec-4cc8-86fc-bb8b4cace75d.svg)](https://wakatime.com/badge/user/018dc603-712a-4205-a226-d4c9ccd0d02b/project/018dd9da-bcec-4cc8-86fc-bb8b4cace75d)
 
-HULITOOL 完全为纯前端项目无后端(但用到了不少[HOTARUAPI](https://api.hotaru.icu)接口)，因此网站通过**GithubPages**服务运行
+该项目是本人的第一个 Vue + TypeScript + Vite + Pinia 项目实践，主要用于 Vue 练手。
 
-- 目前仅有少部分功能仍未实现，稍后也会时不时添加新功能具体查看[TODO](./TODO.md)
-- 变动记录: [CHANGELOG](./CHANGELOG.md)
+- HULITOOL 完全为纯前端项目无后端（但用到了不少 [HotaruApi](https://api.hotaru.icu) 接口），因此网站部署于 GithubPages 服务
+- 目前仅有少部分功能仍未实现，稍后也会时不时添加新功能具体查看 [TODO](./TODO.md)
+- [更新日志](./CHANGELOG.md)
 
 ## 技术栈&依赖包
 
@@ -22,4 +21,4 @@ HULITOOL 完全为纯前端项目无后端(但用到了不少[HOTARUAPI](https:/
 
 ---
 
-- 博客: [imlolicon](https://hotaru.icu)
+- 博客: [HotaruBlog](https://hotaru.icu)

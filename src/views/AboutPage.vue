@@ -9,22 +9,19 @@
 
     <h1><strong style="color: aquamarine">HULITOOL</strong></h1>
     <span
-      >该项目是本人的第一个<strong>Vue+TypeScript+Vite+Pinia</strong>项目实战，主要为了练习一下Vue框架开发</span
+      >该项目是本人的第一个 Vue + TypeScript + Vite + Pinia 项目实践，主要用于
+      Vue 练手。</span
     >
     <li>
-      HULITOOL完全为纯前端项目无后端(但用到了不少<a
-        target="_blank"
-        href="https://api.hotaru.icu"
-        >HOTARUAPI</a
-      >接口)，因此网站通过<strong>GithubPages</strong>服务运行
+      HULITOOL 完全为纯前端项目无后端（但用到了不少
+      <a target="_blank" href="https://api.hotaru.icu">HotaruApi</a> 接口
+      ），因此网站部署于 GithubPages 服务
     </li>
     <li>
-      目前仅有少部分功能仍未实现，稍后也会时不时添加新功能具体查看<router-link
-        to="./info"
-        >TODO</router-link
-      >
+      目前仅有少部分功能仍未实现，稍后也会时不时添加新功能具体查看
+      <router-link to="./info">TODO</router-link>
     </li>
-    <li>变动记录: <router-link to="./info">CHANGELOG</router-link></li>
+    <li><router-link to="./info">更新日志</router-link></li>
     <span
       ><small
         >如果工具页面无法正常加载请关闭浏览器的广告屏蔽功能或加入白名单</small
@@ -50,7 +47,7 @@
         >biyuehu/hulitool</a
       >
     </li>
-    <li>博客: <a target="_blank" href="https://hotaru.icu">imlolicon</a></li>
+    <li>博客: <a target="_blank" href="https://hotaru.icu">HotaruBlog</a></li>
   </div>
   <span style="margin: 0 25%; position: relative"
     >Copyright ❤️ by
